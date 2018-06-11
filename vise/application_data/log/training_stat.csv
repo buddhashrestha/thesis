@@ -1,0 +1,7 @@
+date,time,dataset_name,img_count,state_name,time_sec,space_bytes
+2018-05-10,21:08:26,engine_name,19,Preprocess,0,659391
+2018-05-10,21:08:30,engine_name,19,Stage-1,4,1388037
+2018-05-10,21:08:42,engine_name,19,Stage-2,11,972833
+2018-05-10,21:08:43,engine_name,19,Stage-3,0,43376
+2018-05-10,21:08:43,engine_name,19,Stage-4,0,519184
+2018-05-10,21:08:48,engine_name,19,Stage-5,5,213831

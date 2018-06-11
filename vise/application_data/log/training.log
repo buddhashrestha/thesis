@@ -1,0 +1,893 @@
+Log date : Thu, 10 May 2018 21:08:08 GMT
+
+Server started on port 9971 :-)
+ViseServer::HandleConnection() : [GET ] / (read 872 bytes)
+ViseServer::HandleConnection() : [GET ] /vise.css (read 790 bytes)
+ViseServer::HandleConnection() : [GET ] /vise.js (read 774 bytes)
+ViseServer::HandleConnection() : [GET ] /_vise_index.html (read 791 bytes)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [POST] / (read 899 bytes)
+ViseMessageQueue::Push() : pushed msg = [Setting command _state update_now] , messages_.size()=1
+[Thread 7fec672f6700] : unblocked with msg = [Setting command _state update_now] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /Setting (read 782 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Setting
+ViseMessageQueue::Push() : pushed msg = [Setting command _state show] , messages_.size()=1
+[Thread 7fec672f6700] : unblocked with msg = [Setting command _state show] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec66af5700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [POST] /Setting (read 1039 bytes)
+ViseMessageQueue::Push() : pushed msg = [Info command _state update_now] , messages_.size()=1
+[Thread 7fec66af5700] : unblocked with msg = [Info command _state update_now] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec66af5700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /Info (read 779 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Info
+ViseMessageQueue::Push() : pushed msg = [Info command _control_panel add <div class="action_button" onclick="_vise_server_send_state_post_request('Info', 'proceed')">Proceed</div>] , messages_.size()=1
+[Thread 7fec66af5700] : unblocked with msg = [Info command _control_panel add <div class="action_button" onclick="_vise_server_send_state_post_request('Info', 'proceed')">Proceed</div>] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec66af5700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [POST] /Info (read 877 bytes)
+ViseMessageQueue::Push() : pushed msg = [Preprocess command _state update_now] , messages_.size()=1
+[Thread 7fec66af5700] : unblocked with msg = [Preprocess command _state update_now] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Preprocess command _log clear hide] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Preprocess command _control_panel clear all] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Preprocess command _control_panel add <div id="toggle_log" class="action_button" onclick="_vise_toggle_log()">Log</div>] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Preprocess command _control_panel add &nbsp;&nbsp;|&nbsp;&nbsp;<div id="refresh_log" class="action_button" onclick="_vise_refresh_log()">Refresh</div>] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Preprocess log 
+Preprocessing started ...] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Preprocess command _progress reset show] , messages_.size()=6
+ViseMessageQueue::Push() : pushed msg = [Preprocess log 
+Saving transformed images to [/opt/ox/vgg/vise/application_data/search_engines/engine_name/img/] ] , messages_.size()=7
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess command _log clear hide] (ViseMessageQueue::GetSize() = 6)
+ViseMessageQueue::Push() : pushed msg = [Preprocess progress 1/19] , messages_.size()=7
+ViseMessageQueue::Push() : pushed msg = [Preprocess log .] , messages_.size()=8
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 8)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess command _control_panel clear all] (ViseMessageQueue::GetSize() = 7)
+ViseServer::HandleConnection() : [GET ] /Preprocess (read 785 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Preprocess
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess command _control_panel add <div id="toggle_log" class="action_button" onclick="_vise_toggle_log()">Log</div>] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess command _control_panel add &nbsp;&nbsp;|&nbsp;&nbsp;<div id="refresh_log" class="action_button" onclick="_vise_refresh_log()">Refresh</div>] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess log 
+Preprocessing started ...] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess command _progress reset show] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess log 
+Saving transformed images to [/opt/ox/vgg/vise/application_data/search_engines/engine_name/img/] ] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess progress 1/19] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess log .] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec672f6700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Preprocess progress 19/19] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Preprocess log [Done]] , messages_.size()=2
+@todo: Message queue size = 2
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess progress 19/19] (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec672f6700] : unblocked with msg = [Preprocess progress 19/19] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Preprocess log 
+Written image list to : [/opt/ox/vgg/vise/application_data/search_engines/engine_name/training_data/imlist.txt]] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Stage-1 command _state update_now] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Computing training descriptors ...] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Descriptor command _progress reset show] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress Starting to compute image descriptors] , messages_.size()=6
+SearchEngine::Descriptor() : trainNumDescs = 19000
+SearchEngine::Descriptor() : vocSize = 1900numWorkerThreads = 8
+
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4dffb700] : unblocked with msg = [Preprocess log [Done]] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4dffb700] : unblocked with msg = [Preprocess log 
+Written image list to : [/opt/ox/vgg/vise/application_data/search_engines/engine_name/training_data/imlist.txt]] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4dffb700] : unblocked with msg = [Stage-1 command _state update_now] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4dffb700] : unblocked with msg = [Descriptor log 
+Computing training descriptors ...] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4dffb700] : unblocked with msg = [Descriptor command _progress reset show] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /Stage-1 (read 782 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Stage-1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4d7fa700] : unblocked with msg = [Descriptor progress Starting to compute image descriptors] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 349 / 19000] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 349/19000] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 569 / 19000] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 569/19000] , messages_.size()=4
+[Thread 7fec4d7fa700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 349 / 19000] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4d7fa700] : unblocked with msg = [Descriptor progress 349/19000] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4d7fa700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 569 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4d7fa700] : unblocked with msg = [Descriptor progress 569/19000] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 1328 / 19000] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 1328/19000] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 1608 / 19000] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 1608/19000] , messages_.size()=4
+[Thread 7fec4d7fa700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 1328 / 19000] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 1328/19000] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 1608 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 1608/19000] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 2823 / 19000] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 2823/19000] , messages_.size()=2
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 2823 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 3173 / 19000] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 3173/19000] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 3507 / 19000] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 3507/19000] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 3737 / 19000] , messages_.size()=6
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 3737/19000] , messages_.size()=7
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 3999 / 19000] , messages_.size()=8
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 3999/19000] , messages_.size()=9
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 4957 / 19000] , messages_.size()=10
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 4957/19000] , messages_.size()=11
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 5289 / 19000] , messages_.size()=12
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 5289/19000] , messages_.size()=13
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 5888 / 19000] , messages_.size()=14
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 5888/19000] , messages_.size()=15
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 15)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 2823/19000] (ViseMessageQueue::GetSize() = 14)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 14)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 3173 / 19000] (ViseMessageQueue::GetSize() = 13)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 13)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 3173/19000] (ViseMessageQueue::GetSize() = 12)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 12)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 3507 / 19000] (ViseMessageQueue::GetSize() = 11)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 11)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 3507/19000] (ViseMessageQueue::GetSize() = 10)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 10)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 3737 / 19000] (ViseMessageQueue::GetSize() = 9)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 9)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 3737/19000] (ViseMessageQueue::GetSize() = 8)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 8)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 3999 / 19000] (ViseMessageQueue::GetSize() = 7)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 3999/19000] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 4957 / 19000] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 4957/19000] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 5289 / 19000] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 5289/19000] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 5888 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 5888/19000] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 7560 / 19000] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 7560/19000] , messages_.size()=2
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 7560 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 7830 / 19000] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 7830/19000] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 8093 / 19000] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 8093/19000] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 9201 / 19000] , messages_.size()=6
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 9201/19000] , messages_.size()=7
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 7560/19000] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 7830 / 19000] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 7830/19000] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 8093 / 19000] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 8093/19000] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 9201 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor progress 9201/19000] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 10499 / 19000] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 10499/19000] , messages_.size()=2
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 10499 / 19000] (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 10499 / 19000] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 10641 / 19000] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 10641/19000] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor log 
+Finished computing descriptors 10844 / 19000] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress 10844/19000] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Descriptor log Completed computing descriptors] , messages_.size()=6
+@todo: Message queue size = 6
+ViseMessageQueue::Push() : pushed msg = [Cluster command _progress reset hide] , messages_.size()=7
+ViseMessageQueue::Push() : pushed msg = [Stage-2 command _state update_now] , messages_.size()=8
+@todo: Message queue size = 8
+ViseMessageQueue::Push() : pushed msg = [Cluster log 
+Starting clustering of descriptors ...] , messages_.size()=9
+ViseMessageQueue::Push() : pushed msg = [Cluster command _progress reset show] , messages_.size()=10
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress Starting clustering of descriptors] , messages_.size()=11
+ViseMessageQueue::Push() : pushed msg = [Cluster log 
+Command executed: $python /opt/ox/vgg/vise/vise-1.0.x//src/v2/indexing/compute_clusters.py engine_name /opt/ox/vgg/vise/application_data/search_engines/engine_name/training_data/vise_config.cfg] , messages_.size()=12
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 12)
+[Thread 7fec4e7fc700] : unblocked with msg = [Descriptor progress 10499/19000] (ViseMessageQueue::GetSize() = 11)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 11)
+[Thread 7fec4e7fc700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 10641 / 19000] (ViseMessageQueue::GetSize() = 10)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 10)
+[Thread 7fec4e7fc700] : unblocked with msg = [Descriptor progress 10641/19000] (ViseMessageQueue::GetSize() = 9)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 9)
+[Thread 7fec4e7fc700] : unblocked with msg = [Descriptor log 
+Finished computing descriptors 10844 / 19000] (ViseMessageQueue::GetSize() = 8)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 8)
+[Thread 7fec4e7fc700] : unblocked with msg = [Descriptor progress 10844/19000] (ViseMessageQueue::GetSize() = 7)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4e7fc700] : unblocked with msg = [Descriptor log Completed computing descriptors] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4e7fc700] : unblocked with msg = [Cluster command _progress reset hide] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4e7fc700] : unblocked with msg = [Stage-2 command _state update_now] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4e7fc700] : unblocked with msg = [Cluster log 
+Starting clustering of descriptors ...] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4e7fc700] : unblocked with msg = [Cluster command _progress reset show] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /Stage-2 (read 782 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Stage-2
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4effd700] : unblocked with msg = [Descriptor progress Starting clustering of descriptors] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log 
+Command executed: $python /opt/ox/vgg/vise/vise-1.0.x//src/v2/indexing/compute_clusters.py engine_name /opt/ox/vgg/vise/application_data/search_engines/engine_name/training_data/vise_config.cfg] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Pypar (version 2.1.4) initialised MPI OK with 1 processors
+] , messages_.size()=1
+SearchEngine::Cluster() : Pypar (version 2.1.4) initialised MPI OK with 1 processors
+
+ViseMessageQueue::Push() : pushed msg = [Cluster log Computing clusters:
+] , messages_.size()=2
+SearchEngine::Cluster() : Computing clusters:
+
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Pypar (version 2.1.4) initialised MPI OK with 1 processors
+] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Using a (10844 x 128) uint8 array for the datapoints
+] , messages_.size()=2
+SearchEngine::Cluster() : Using a (10844 x 128) uint8 array for the datapoints
+
+ViseMessageQueue::Push() : pushed msg = [Cluster log Using a (1900 x 128) float32 array for the clusters
+] , messages_.size()=3
+SearchEngine::Cluster() : Using a (1900 x 128) float32 array for the clusters
+
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Computing clusters:
+] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Using a (10844 x 128) uint8 array for the datapoints
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Using a (1900 x 128) float32 array for the clusters
+] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log 
+] , messages_.size()=1
+SearchEngine::Cluster() : 
+
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log 
+] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 1/10 : sse = 1796.29, mem = 34.18MB, took 1.14s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 1/10 : sse = 1796.29, mem = 34.18MB, took 1.14s
+
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 1/10 : sse = 1796.29, mem = 34.18MB, took 1.14s
+] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 1/10] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 1/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 2/10 : sse = 1169.56, mem = 28.66MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 2/10 : sse = 1169.56, mem = 28.66MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 2/10] , messages_.size()=1
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 2/10 : sse = 1169.56, mem = 28.66MB, took 1.12s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 2/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 3/10 : sse = 1119.29, mem = 28.66MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 3/10 : sse = 1119.29, mem = 28.66MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 3/10] , messages_.size()=2
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 3/10 : sse = 1119.29, mem = 28.66MB, took 1.12s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 3/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 4/10 : sse = 1099.91, mem = 28.40MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 4/10 : sse = 1099.91, mem = 28.40MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 4/10] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 4/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 5/10 : sse = 1092.21, mem = 28.40MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 5/10 : sse = 1092.21, mem = 28.40MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 5/10] , messages_.size()=2
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 5/10 : sse = 1092.21, mem = 28.40MB, took 1.12s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 5/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 6/10 : sse = 1089.51, mem = 28.40MB, took 1.15s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 6/10 : sse = 1089.51, mem = 28.40MB, took 1.15s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 6/10] , messages_.size()=2
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 6/10 : sse = 1089.51, mem = 28.40MB, took 1.15s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 6/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 7/10 : sse = 1088.13, mem = 28.40MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 7/10 : sse = 1088.13, mem = 28.40MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 7/10] , messages_.size()=2
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 7/10 : sse = 1088.13, mem = 28.40MB, took 1.12s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 7/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 8/10 : sse = 1087.31, mem = 28.40MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 8/10 : sse = 1087.31, mem = 28.40MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 8/10] , messages_.size()=2
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 8/10 : sse = 1087.31, mem = 28.40MB, took 1.12s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 8/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 9/10 : sse = 1087.09, mem = 28.40MB, took 1.12s
+] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 9/10 : sse = 1087.09, mem = 28.40MB, took 1.12s
+
+ViseMessageQueue::Push() : pushed msg = [Cluster progress 9/10] , messages_.size()=1
+[Thread 7fec4effd700] : unblocked with msg = [Cluster log Iteration 9/10 : sse = 1087.09, mem = 28.40MB, took 1.12s
+] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 9/10] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster log Iteration 10/10 : sse = 1086.26, mem = 28.40MB, took 1.13s] , messages_.size()=1
+SearchEngine::Cluster() : Iteration 10/10 : sse = 1086.26, mem = 28.40MB, took 1.13s
+ViseMessageQueue::Push() : pushed msg = [
+[Thread rogress 10/10] , messages_.size()=, mem = 21
+ViseMessageQueue::Push() : pushed msg = [
+[Thread rogress 10/10] , messages_.size()=, mem = 217fec4effd700] : unblocked with msg = [Cluster log Iteration 10/10 : sse = 1086.26, mem = 28.40MB, took 1.13s] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Cluster command _progress reset hide] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Stage-3 command _state update_now] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Assign log 
+Starting assignment ...] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Cluster command _progress reset hide] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress Starting assignment] , messages_.size()=6
+ViseMessageQueue::Push() : pushed msg = [Assignment log 
+Loading cluster centers ...] , messages_.size()=7
+ViseMessageQueue::Push() : pushed msg = [Assignment log done (0.61499 ms)] , messages_.size()=8
+ViseMessageQueue::Push() : pushed msg = [Assignment log 
+Constructing NN search object ...] , messages_.size()=9
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 9)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster progress 10/10] (ViseMessageQueue::GetSize() = 8)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 8)
+[Thread 7fec4effd700] : unblocked with msg = [Cluster command _progress reset hide] (ViseMessageQueue::GetSize() = 7)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4effd700] : unblocked with msg = [Stage-3 command _state update_now] (ViseMessageQueue::GetSize() = 6)
+ViseMessageQueue::Push() : pushed msg = [Assignment log done (19.3508 ms)] , messages_.size()=7
+ViseMessageQueue::Push() : pushed msg = [Assignment log 
+numTrainDescs= 10844] , messages_.size()=8
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 8)
+[Thread 7fec4dffb700] : unblocked with msg = [Assign log 
+Starting assignment ...] (ViseMessageQueue::GetSize() = 7)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4d7fa700] : unblocked with msg = [Cluster command _progress reset hide] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /Stage-3 (read 782 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Stage-3
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4dffb700] : unblocked with msg = [Descriptor progress Starting assignment] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log 
+Loading cluster centers ...] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log done (0.61499 ms)] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log 
+Constructing NN search object ...] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log done (19.3508 ms)] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log 
+numTrainDescs= 10844] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Assignment log 
+Processed 1 / 8] , messages_.size()=1
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log 
+Processed 1 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Assignment log 
+Processed 8 / 8] , messages_.size()=1
+[Thread 7fec4dffb700] : unblocked with msg = [Assignment log 
+Processed 8 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Stage-4 command _state update_now] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Computing hamm ...] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Cluster command _progress reset hide] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress Starting to compute hamm embeddings] , messages_.size()=4
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Loading cluster centres ... ] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Hamm log done (0.653076 ms)] , messages_.size()=6
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Reading 10000 training descriptors for PCA] , messages_.size()=7
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4dffb700] : unblocked with msg = [Stage-4 command _state update_now] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4dffb700] : unblocked with msg = [Hamm log 
+Computing hamm ...] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Computing PCA] , messages_.size()=6
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4dffb700] : unblocked with msg = [Cluster command _progress reset hide] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /Stage-4 (read 782 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Stage-4
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4dffb700] : unblocked with msg = [Descriptor progress Starting to compute hamm embeddings] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4dffb700] : unblocked with msg = [Hamm log 
+Loading cluster centres ... ] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4dffb700] : unblocked with msg = [Hamm log done (0.653076 ms)] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4dffb700] : unblocked with msg = [Hamm log 
+Reading 10000 training descriptors for PCA] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4dffb700] : unblocked with msg = [Hamm log 
+Computing PCA] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4dffb700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Computing random rotation] , messages_.size()=1
+[Thread 7fec4dffb700] : unblocked with msg = [Hamm log 
+Computing random rotation] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Finished with rotation (108.687 ms)] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Finished with rotation (108.687 ms)] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 1 / 8] , messages_.size()=1
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 1 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 2 / 8] , messages_.size()=1
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 2 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 3 / 8] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 3 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 4 / 8] , messages_.size()=1
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 4 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 5 / 8] , messages_.size()=1
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 5 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 6 / 8] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 6 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 7 / 8] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 7 / 8] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 7 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Hamm log 
+Processed 8 / 8] , messages_.size()=1
+[Thread 7fec4e7fc700] : unblocked with msg = [Hamm log 
+Processed 8 / 8] (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Stage-5 command _state update_now] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Index log 
+Starting indexing ...] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Cluster command _progress reset show] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Descriptor progress Starting image indexing] , messages_.size()=4buildIndex::build: beginning
+
+ViseMessageQueue::Push() : pushed msg = [Index log 
+Loading cluster centres ... ] , messages_.size()=5
+ViseMessageQueue::Push() : pushed msg = [Index log done (0.503174 ms)] , messages_.size()=6
+ViseMessageQueue::Push() : pushed msg = [Index log 
+Constructing NN search object ... ] , messages_.size()=7
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 7)
+[Thread 7fec4e7fc700] : unblocked with msg = [Stage-5 command _state update_now] (ViseMessageQueue::GetSize() = 6)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 6)
+[Thread 7fec4e7fc700] : unblocked with msg = [Index log 
+Starting indexing ...] (ViseMessageQueue::GetSize() = 5)
+ViseServer::HandleConnection() : [GET ] /_state (read 781 bytes)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 5)
+[Thread 7fec4e7fc700] : unblocked with msg = [Cluster command _progress reset show] (ViseMessageQueue::GetSize() = 4)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4effd700] : unblocked with msg = [Descriptor progress Starting image indexing] (ViseMessageQueue::GetSize() = 3)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4effd700] : unblocked with msg = [Index log 
+Loading cluster centres ... ] (ViseMessageQueue::GetSize() = 2)
+ViseMessageQueue::Push() : pushed msg = [Index log done (19.158 ms)] , messages_.size()=3
+ViseServer::HandleConnection() : [GET ] /Stage-5 (read 782 bytes)
+ViseServer::HandleStateGetRequest() : resource_name = Stage-5
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4e7fc700] : unblocked with msg = [Index log done (0.503174 ms)] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4e7fc700] : unblocked with msg = [Index log 
+Constructing NN search object ... ] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4e7fc700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4e7fc700] : unblocked with msg = [Index log done (19.158 ms)] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+SemiSorted processed 1 / 19] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Index progress 1/19] , messages_.size()=2
+[Thread 7fec4d7fa700] : unblocked with msg = [Index log 
+SemiSorted processed 1 / 19] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4d7fa700] : unblocked with msg = [Index progress 1/19] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4d7fa700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+SemiSorted processed 7 / 19] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Index progress 7/19] , messages_.size()=2
+[Thread 7fec4d7fa700] : unblocked with msg = [Index log 
+SemiSorted processed 7 / 19] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Index progress 7/19] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+SemiSorted processed 8 / 19] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Index progress 8/19] , messages_.size()=2
+[Thread 7fec4cff9700] : unblocked with msg = [Index log 
+SemiSorted processed 8 / 19] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Index progress 8/19] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+SemiSorted processed 17 / 19] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Index progress 17/19] , messages_.size()=2
+[Thread 7fec4cff9700] : unblocked with msg = [Index log 
+SemiSorted processed 17 / 19] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4cff9700] : unblocked with msg = [Index progress 17/19] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4cff9700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+SemiSorted processed 19 / 19] , messages_.size()=1
+ViseMessageQueue::Push() : pushed msg = [Index progress 19/19] , messages_.size()=2
+[Thread 7fec4cff9700] : unblocked with msg = [Index log 
+SemiSorted processed 19 / 19] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+index semi sorted] , messages_.size()=2
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4effd700] : unblocked with msg = [Index progress 19/19] (ViseMessageQueue::GetSize() = 1)
+ViseMessageQueue::Push() : pushed msg = [Index log 
+index merged] , messages_.size()=2buildIndex::mergePartialFidx: done in 00:00:00
+
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4effd700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4effd700] : unblocked with msg = [Index log 
+index semi sorted] (ViseMessageQueue::GetSize() = 1)buildIndex::mergeSortedFiles: done in 00:00:00
+
+ViseMessageQueue::Push() : pushed msg = [Index log 
+Indexing completed in 00:00:05] , messages_.size()=2
+ViseMessageQueue::Push() : pushed msg = [Ready to Search command _state update_now] , messages_.size()=3
+ViseMessageQueue::Push() : pushed msg = [Ready to Search command _go_to home] , messages_.size()=4APIport= 65521
+datasetV2::datasetV2: Loading dataset from file= /opt/ox/vgg/vise/application_data/search_engines/engine_name/training_data/train_dset.v2bin
+datasetV2::datasetV2: Loaded info about 19 images
+datasetV2::datasetV2: last image:
+Zinedine_Zidane_0004.jpg
+datasetV2::datasetV2: Generated fn2ID
+/opt/ox/vgg/vise/application_data/search_engines/engine_name/img/Zinedine_Zidane_0006.jpg
+apiV2::main: Loading cluster centres
+protoDbInRam::protoDbInRam: loading db
+protoDbInRam::protoDbInRam: loading ID= 0 / 19 0 ms
+protoDbInRam::protoDbInRam: loading ID= 1 / 19 0.0209961 ms
+protoDbInRam::protoDbInRam: loading ID= 2 / 19 0.0251465 ms
+protoDbInRam::protoDbInRam: loading ID= 3 / 19 0.0280762 ms
+protoDbInRam::protoDbInRam: loading ID= 4 / 19 0.0310059 ms
+protoDbInRam::protoDbInRam: loading ID= 5 / 19 0.0332031 ms
+protoDbInRam::protoDbInRam: loading ID= 6 / 19 0.0361328 ms
+protoDbInRam::protoDbInRam: loading ID= 7 / 19 0.0390625 ms
+protoDbInRam::protoDbInRam: loading ID= 8 / 19 0.0432129 ms
+protoDbInRam::protoDbInRam: loading ID= 9 / 19 0.0461426 ms
+protoDbInRam::protoDbInRam: loading ID= 10 / 19 0.0490723 ms
+protoDbInRam::protoDbInRam: loading ID= 11 / 19 0.052002 ms
+protoDbInRam::protoDbInRam: loading ID= 12 / 19 0.0681152 ms
+protoDbInRam::protoDbInRam: loading ID= 13 / 19 0.072998 ms
+protoDbInRam::protoDbInRam: loading ID= 14 / 19 0.0771484 ms
+protoDbInRam::protoDbInRam: loading ID= 15 / 19 0.0810547 ms
+protoDbInRam::protoDbInRam: loading ID= 16 / 19 0.0839844 ms
+protoDbInRam::protoDbInRam: loading ID= 17 / 19 0.0881348 ms
+protoDbInRam::protoDbInRam: loading ID= 18 / 19 0.092041 ms
+protoDbInRam::protoDbInRam: loading db - DONE (0.0961914 ms)
+protoDbInRam::protoDbInRam: loading db
+protoDbInRam::protoDbInRam: loading ID= 0 / 1900 0 ms
+
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 4)
+[Thread 7fec4ffff700] : unblocked with msg = [Index log 
+index merged] (ViseMessageQueue::GetSize() = 3)apiV2::main: Loading cluster centres - DONE (0.513916 ms)
+apiV2::main: Constructing NN search object
+protoDbInRam::protoDbInRam: loading ID= 190 / 1900 0.452148 ms
+protoDbInRam::protoDbInRam: loading ID= 380 / 1900 0.823975 ms
+protoDbInRam::protoDbInRam: loading ID= 570 / 1900 1.19507 ms
+protoDbInRam::protoDbInRam: loading ID= 760 / 1900 1.56396 ms
+protoDbInRam::protoDbInRam: loading ID= 950 / 1900 1.94116 ms
+protoDbInRam::protoDbInRam: loading ID= 1140 / 1900 2.37695 ms
+protoDbInRam::protoDbInRam: loading ID= 1330 / 1900 2.93604 ms
+protoDbInRam::protoDbInRam: loading ID= 1520 / 1900 3.46411 ms
+protoDbInRam::protoDbInRam: loading ID= 1710 / 1900 3.92505 ms
+protoDbInRam::protoDbInRam: loading db - DONE (4.38208 ms)
+
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 3)
+[Thread 7fec4ffff700] : unblocked with msg = [Index log 
+Indexing completed in 00:00:05] (ViseMessageQueue::GetSize() = 2)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 2)
+[Thread 7fec4ffff700] : unblocked with msg = [Ready to Search command _state update_now] (ViseMessageQueue::GetSize() = 1)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4ffff700] : unblocked with msg = [Ready to Search command _go_to home] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)apiV2::main: Constructing NN search object - DONE (18.8872 ms)
+tfidfV2::computeIdf
+tfidfV2::computeIdf: wordID= 0 / 1900 0.00415039 ms
+tfidfV2::computeIdf: wordID= 95 / 1900 0.171143 ms
+tfidfV2::computeIdf: wordID= 190 / 1900 0.296143 ms
+tfidfV2::computeIdf: wordID= 285 / 1900 0.414062 ms
+tfidfV2::computeIdf: wordID= 380 / 1900 0.535156 ms
+tfidfV2::computeIdf: wordID= 475 / 1900 0.668945 ms
+tfidfV2::computeIdf: wordID= 570 / 1900 0.792969 ms
+tfidfV2::computeIdf: wordID= 665 / 1900 0.926025 ms
+tfidfV2::computeIdf: wordID= 760 / 1900 1.05103 ms
+tfidfV2::computeIdf: wordID= 855 / 1900 1.17407 ms
+tfidfV2::computeIdf: wordID= 950 / 1900 1.30103 ms
+tfidfV2::computeIdf: wordID= 1045 / 1900 1.42603 ms
+tfidfV2::computeIdf: wordID= 1140 / 1900 1.54907 ms
+tfidfV2::computeIdf: wordID= 1235 / 1900 1.67896 ms
+tfidfV2::computeIdf: wordID= 1330 / 1900 1.82397 ms
+tfidfV2::computeIdf: wordID= 1425 / 1900 1.98901 ms
+tfidfV2::computeIdf: wordID= 1520 / 1900 2.17798 ms
+tfidfV2::computeIdf: wordID= 1615 / 1900 2.36597 ms
+tfidfV2::computeIdf: wordID= 1710 / 1900 2.56104 ms
+tfidfV2::computeIdf: wordID= 1805 / 1900 2.76196 ms
+tfidfV2::computeIdf: DONE (2.9231 ms)
+tfidfV2::computeDocL2
+tfidfV2::computeDocL2: wordID= 0 / 1900 0 ms
+tfidfV2::computeDocL2: wordID= 95 / 1900 0.187988 ms
+tfidfV2::computeDocL2: wordID= 190 / 1900 0.336914 ms
+tfidfV2::computeDocL2: wordID= 285 / 1900 0.47583 ms
+tfidfV2::computeDocL2: wordID= 380 / 1900 0.61499 ms
+tfidfV2::computeDocL2: wordID= 475 / 1900 0.757812 ms
+tfidfV2::computeDocL2: wordID= 570 / 1900 0.904785 ms
+tfidfV2::computeDocL2: wordID= 665 / 1900 1.06299 ms
+tfidfV2::computeDocL2: wordID= 760 / 1900 1.21191 ms
+tfidfV2::computeDocL2: wordID= 855 / 1900 1.35693 ms
+tfidfV2::computeDocL2: wordID= 950 / 1900 1.51099 ms
+tfidfV2::computeDocL2: wordID= 1045 / 1900 1.66284 ms
+tfidfV2::computeDocL2: wordID= 1140 / 1900 1.82397 ms
+tfidfV2::computeDocL2: wordID= 1235 / 1900 1.98096 ms
+tfidfV2::computeDocL2: wordID= 1330 / 1900 2.13989 ms
+tfidfV2::computeDocL2: wordID= 1425 / 1900 2.28491 ms
+tfidfV2::computeDocL2: wordID= 1520 / 1900 2.43384 ms
+tfidfV2::computeDocL2: wordID= 1615 / 1900 2.61694 ms
+tfidfV2::computeDocL2: wordID= 1710 / 1900 2.79395 ms
+tfidfV2::computeDocL2: wordID= 1805 / 1900 2.99194 ms
+tfidfV2::computeDocL2: DONE (3.21484 ms)
+
+ViseMessageQueue::Push() : pushed msg = [LoadSearchEngine message Search engine loaded. Please wait ... ] , messages_.size()=1
+absAPI::server() : Waiting for requests on port 65521
+[Thread 7fec4ffff700] : unblocked with msg = [LoadSearchEngine message Search engine loaded. Please wait ... ] (ViseMessageQueue::GetSize() = 0)
+Loading frontend using : /opt/ox/vgg/vise/vise-1.0.x//src/ui/web/webserver2.py
+ViseMessageQueue::Push() : pushed msg = [Query command _redirect http://localhost:9973 1000] , messages_.size()=1
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 1)
+[Thread 7fec4ffff700] : unblocked with msg = [Query command _redirect http://localhost:9973 1000] (ViseMessageQueue::GetSize() = 0)
+ViseServer::HandleConnection() : [GET ] /_message (read 783 bytes)
+[Thread 7fec4ffff700] : blocked by ViseMessageQueue::Instance()->BlockingPop() (ViseMessageQueue::GetSize() = 0)
