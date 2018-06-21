@@ -141,6 +141,14 @@ class Segment(namedtuple('Segment', ['start', 'end'])):
     middle = property(fget=_get_middle)
     """Segment mid-time (read-only)"""
 
+    def _get_start(self):
+        """Return staring point of segment"""
+        return self.start
+
+    def _get_end(self):
+        """Return ending point of segment"""
+        return self.end
+
     def __iter__(self):
         """Unpack segment boundaries as float
 

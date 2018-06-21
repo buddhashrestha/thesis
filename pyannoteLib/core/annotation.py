@@ -747,6 +747,19 @@ class Annotation(object):
 
         return labels
 
+
+    def group_by_embeddings(self):
+        """Get sorted list of labels
+
+        Returns
+        -------
+        labels : list
+            Sorted list of labels
+        """
+        for  v in self._tracks.itervalues():
+            print(v)
+        return self._tracks.itervalues()
+
     def subset(self, labels, invert=False):
         """Filter annotation by labels
 
