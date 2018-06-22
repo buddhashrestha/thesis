@@ -1,4 +1,5 @@
 from pyannoteVideo.pyannote.video.face.clustering import FaceClustering
+import pandas as pd
 import numpy as np
 clustering = FaceClustering(threshold=0.6)
 face_tracks, embeddings = clustering.model.preprocess('/home/buddha/thesis/pyannote-data/TheBigBangTheory.embedding.txt')
@@ -18,3 +19,6 @@ for each_label in result.labels():
     person[each_label] = ar
     ar = [0] * video_duration
 print(person)
+
+df = pd.DataFrame(list(person.items()), columns=['person', 'BitMap'])
+df.to_csv('person_bitmap_vector.csv', sep='\t')
