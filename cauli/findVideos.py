@@ -6,12 +6,9 @@ import numpy as np
 import ast
 
 
-#t = genfromtxt('1.csv', delimiter=',')
-#t = t.astype('float32')
-
 d = 128
 
-df = pd.read_csv('matrix.csv',sep='\t')
+df = pd.read_csv('person_to_video_matrix.csv',sep='\t')
 cols = list(df)
 cols.insert(0, cols.pop(cols.index('p')))
 df = df.ix[:, cols]
@@ -54,19 +51,13 @@ print(I)                  # neighbors of the 5 last queries
 
 #if face is not present: then add to the list
 if I ==[[]]:
-    df2 = pd.DataFrame({'p':q.tolist(),video_num:1})
-    df = pd.concat([df,df2])
+    print("Not found")
 else:
     pos = I[0][0]
-    df.iloc[pos, df.columns.get_loc(video_num)] = 1
+    p1 = df.iloc[pos]   #corresponding to q1 and q2
+    p2 = df.iloc[pos]   #for d2
 
-df.to_csv('person_to_video_matrix.csv', sep='\t')
-
-
-#after the video updates are done, now we need to select the bitmap index for the queried person.
-p1 = list(df.iloc[0,3:])
-p2 = list(df.iloc[1,3:])
-#...... and so on
+#instead of p1 and p2, use array
 #then apply.. bitwise 'and' operation.
 vector = "".join([str(int(a*b)) for a,b in zip(p1,p2)])
 
@@ -74,3 +65,5 @@ from bitmap import BitMap
 bm = BitMap.fromstring(vector)
 print(bm.nonzero())
 
+#get the videos v1,v2,v3... iterate over all the videos using folder structure in the search.py
+#pass bm to search module for p1 and p2
