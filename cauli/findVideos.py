@@ -16,7 +16,7 @@ data_matrix = current_directory + '/data/person_to_video_matrix.csv'
 
 df = pd.read_csv(data_matrix,sep='\t')
 cols = list(df)
-cols.insert(0, cols.pop(cols.index('p')))
+cols.insert(0, cols.pop(cols.index('person')))
 df = df.ix[:, cols]
 
 x = str(df['person'].tolist()).replace("\'","")
