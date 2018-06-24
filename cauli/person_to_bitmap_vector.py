@@ -43,10 +43,9 @@ df_embeddings.to_csv(current_directory + "/" + str(vid_num) + '/person_embedding
 
 import numpy
 import pandas as pd
-import faiss
+#import faiss
 import ast
 import os
-
 
 d = 128
 data_matrix = current_directory + '/data/person_to_video_matrix.csv'
@@ -55,8 +54,8 @@ if not(os.path.exists(data_matrix)):
     df[0] = 0
     video_num = 1
     for each_label in result.labels():
-        q = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
-        #q = q.astype('float32')
+        q = np.array(list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:]))
+        q = q.astype('float32')
         q = q.reshape(1, 128)
         # if face is not present: then add to the list
         df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
@@ -100,7 +99,7 @@ else:
         D, I = index.search(q, k)     # actual search
         #if face is not present: then add to the list
         if I ==[[]]:
-            df2 = pd.DataFrame({'p':q.tolist(),video_num:1})
+            df2 = pd.DataFrame({'person':q.tolist(),video_num:1})
             df = pd.concat([df,df2])
         else:
             pos = I[0][0]
