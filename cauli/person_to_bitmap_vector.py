@@ -56,7 +56,7 @@ if not(os.path.exists(data_matrix)):
     video_num = 1
     for each_label in result.labels():
         q = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
-        q = q.astype('float32')
+        #q = q.astype('float32')
         q = q.reshape(1, 128)
         # if face is not present: then add to the list
         df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
