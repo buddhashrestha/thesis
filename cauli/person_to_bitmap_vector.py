@@ -93,7 +93,7 @@ else:
     index.add(y)                  # add may be a bit slower as well
 
     for each_label in result.labels():
-        q = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
+        q = np.array(list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:]))
         q = q.astype('float32')
         q = q.reshape(1, 128)
         D, I = index.search(q, k)     # actual search
