@@ -50,8 +50,6 @@ q.append(leonard)
 
 index.add(y)                  # add may be a bit slower as well
 
-
-
 D, I = index.search(q, k)     # actual search
 print(I)                  # neighbors of the 5 last queries
 
@@ -60,9 +58,11 @@ if I ==[[]]:
     print("Not found")
 else:
     pos1 = I[0][0]
-    pos1 = I[1][0]
+    pos2 = I[1][0]
     p1 = df.iloc[pos1]   #corresponding to q1 and q2
     p2 = df.iloc[pos2]   #for d2
+    print(p1)
+    print(p2)
 
 #instead of p1 and p2, use array
 #then apply.. bitwise 'and' operation.
