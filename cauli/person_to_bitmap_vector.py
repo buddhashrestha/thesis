@@ -1,10 +1,17 @@
 from pyannoteVideo.pyannote.video.face.clustering import FaceClustering
 import pandas as pd
 import numpy as np
+import os,sys
+sys.path.append('../')
+from utils import file
+
 clustering = FaceClustering(threshold=0.6)
 face_tracks, embeddings = clustering.model.preprocess('/home/buddha/thesis/pyannote-data/TheBigBangTheory.embedding.txt')
 
 result = clustering(face_tracks, features=embeddings)
+
+current_directory = os.getcwd()
+
 
 #video duration in seconds
 video_duration = int(embeddings['time'].iloc[-1])
@@ -26,8 +33,11 @@ df_person = pd.DataFrame(list(person.items()), columns=['person_label', 'BitMap'
 df_embeddings = pd.DataFrame(list(embeddings_labels_mappings.items()), columns=['person_label', 'Embeddings'])
 
 vid_num = 1
-df_person.to_csv(str(vid_num)+'/person_bitmap_vector.csv', sep='\t')
-df_embeddings.to_csv(str(vid_num)+'/person_embeddings_mapping.csv', sep='\t')
+
+file.check_directory(current_directory + "/" + str(vid_num))
+
+df_person.to_csv(current_directory + "/" + str(vid_num) + '/person_bitmap_vector.csv', sep='\t')
+df_embeddings.to_csv(current_directory + "/" + str(vid_num) + '/person_embeddings_mapping.csv', sep='\t')
 
 
 import numpy
@@ -38,7 +48,7 @@ import ast
 
 d = 128
 
-df = pd.read_csv('person_to_video_matrix.csv',sep='\t')
+df = pd.read_csv(current_directory + 'data/person_to_video_matrix.csv',sep='\t')
 cols = list(df)
 cols.insert(0, cols.pop(cols.index('p')))
 df = df.ix[:, cols]
@@ -81,5 +91,6 @@ for each_label in result.labels():
         pos = I[0][0]
         df.iloc[pos, df.columns.get_loc(video_num)] = 1
 
-df.to_csv(str(video_num) + '/person_to_video_matrix.csv', sep='\t')
+df.to_csv(current_directory + 'data/person_to_video_matrix.csv', sep='\t')
+
 
