@@ -59,6 +59,8 @@ else:
     pos2 = I[1][0]
     p1 = df.iloc[pos1]   #corresponding to q1 and q2
     p2 = df.iloc[pos2]   #for d2
+    p1 = list(df.iloc[pos1, 4:])
+    p2 = list(df.iloc[pos2, 4:])
     print(p1)
     print(p2)
 
