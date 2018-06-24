@@ -20,6 +20,7 @@ cols.insert(0, cols.pop(cols.index('person')))
 df = df.ix[:, cols]
 
 x = str(df['person'].tolist()).replace("\'","")
+print(x)
 x = ast.literal_eval(x)
 y = numpy.array(x)
 y = y.astype('float32')
