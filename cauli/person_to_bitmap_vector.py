@@ -50,51 +50,61 @@ import os
 
 d = 128
 data_matrix = current_directory + '/data/person_to_video_matrix.csv'
-if os.path.exists(data_matrix):
-    df = pd.read_csv(data_matrix,sep='\t')
-else:
+if not(os.path.exists(data_matrix)):
     df = pd.DataFrame(columns=['person','0'])
-cols = list(df)
-cols.insert(0, cols.pop(cols.index('person')))
-df = df.ix[:, cols]
+    df[0] = 0
+    video_num = 1
+    for each_label in result.labels():
+        q = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
+        q = q.astype('float32')
+        q = q.reshape(1, 128)
+        # if face is not present: then add to the list
+        df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
+        df = pd.concat([df, df2])
+else:
+    df = pd.read_csv(data_matrix, sep='\t')
 
-x = str(df['person'].tolist()).replace("\'","")
-x = ast.literal_eval(x)
-y = numpy.array(x)
-y = y.astype('float32')
-#now you can train x as you did t
+    cols = list(df)
+    cols.insert(0, cols.pop(cols.index('person')))
+    df = df.ix[:, cols]
 
-#add new column for that video
-#cols = pd.read_csv('test.csv',sep='\t').columns.tolist()
-video_num = int(cols[-1]) + 1
+    x = str(df['person'].tolist()).replace("\'","")
+    x = ast.literal_eval(x)
+    y = numpy.array(x)
+    y = y.astype('float32')
+    #now you can train x as you did t
 
-#by default every video is zero
-df[video_num] = 0
+    #add new column for that video
+    #cols = pd.read_csv('test.csv',sep='\t').columns.tolist()
+    video_num = int(cols[-1]) + 1
 
-#searching section
+    #by default every video is zero
+    df[video_num] = 0
 
-nlist = 1
-k = 1
-quantizer = faiss.IndexFlatL2(d)  # the other index
-index = faiss.IndexIVFFlat(quantizer, d, nlist, faiss.METRIC_L2)
+    #searching section
+
+    nlist = 1
+    k = 1
+    quantizer = faiss.IndexFlatL2(d)  # the other index
+    index = faiss.IndexIVFFlat(quantizer, d, nlist, faiss.METRIC_L2)
 
 
-index.train(y)# t and y ma k farak cha?
+    index.train(y)# t and y ma k farak cha?
 
-index.add(y)                  # add may be a bit slower as well
+    index.add(y)                  # add may be a bit slower as well
 
-for each_label in result.labels():
-    q = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
-    q = q.astype('float32')
-    q = q.reshape(1, 128)
-    D, I = index.search(q, k)     # actual search
-    #if face is not present: then add to the list
-    if I ==[[]]:
-        df2 = pd.DataFrame({'p':q.tolist(),video_num:1})
-        df = pd.concat([df,df2])
-    else:
-        pos = I[0][0]
-        df.iloc[pos, df.columns.get_loc(video_num)] = 1
+    for each_label in result.labels():
+        q = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
+        q = q.astype('float32')
+        q = q.reshape(1, 128)
+        D, I = index.search(q, k)     # actual search
+        #if face is not present: then add to the list
+        if I ==[[]]:
+            df2 = pd.DataFrame({'p':q.tolist(),video_num:1})
+            df = pd.concat([df,df2])
+        else:
+            pos = I[0][0]
+            df.iloc[pos, df.columns.get_loc(video_num)] = 1
 
 df.to_csv(current_directory + '/data/person_to_video_matrix.csv', sep='\t')
 
