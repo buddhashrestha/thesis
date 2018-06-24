@@ -33,5 +33,5 @@ class FaceDescriptor(object):
 
 
 
-face = FaceDescriptor("/home/buddha/Desktop/buddha.jpg")
+face = FaceDescriptor("/home/buddha/thesis/cauli/images/leonard.jpg")
 print(numpy.asarray(face.getDescriptor()))
