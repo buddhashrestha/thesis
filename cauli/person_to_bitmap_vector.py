@@ -45,16 +45,20 @@ import numpy
 import pandas as pd
 import faiss
 import ast
+import os
 
 
 d = 128
-
-df = pd.read_csv(current_directory + '/data/person_to_video_matrix.csv',sep='\t')
+data_matrix = current_directory + '/data/person_to_video_matrix.csv'
+if os.path.exists(data_matrix):
+    df = pd.read_csv(data_matrix,sep='\t')
+else:
+    df = pd.DataFrame(columns=['person','0'])
 cols = list(df)
-cols.insert(0, cols.pop(cols.index('p')))
+cols.insert(0, cols.pop(cols.index('person')))
 df = df.ix[:, cols]
 
-x = str(df['p'].tolist()).replace("\'","")
+x = str(df['person'].tolist()).replace("\'","")
 x = ast.literal_eval(x)
 y = numpy.array(x)
 y = y.astype('float32')
@@ -92,6 +96,6 @@ for each_label in result.labels():
         pos = I[0][0]
         df.iloc[pos, df.columns.get_loc(video_num)] = 1
 
-df.to_csv(current_directory + 'data/person_to_video_matrix.csv', sep='\t')
+df.to_csv(current_directory + '/data/person_to_video_matrix.csv', sep='\t')
 
 
