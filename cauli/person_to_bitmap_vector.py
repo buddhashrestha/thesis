@@ -49,7 +49,7 @@ import ast
 
 d = 128
 
-df = pd.read_csv(current_directory + 'data/person_to_video_matrix.csv',sep='\t')
+df = pd.read_csv(current_directory + '/data/person_to_video_matrix.csv',sep='\t')
 cols = list(df)
 cols.insert(0, cols.pop(cols.index('p')))
 df = df.ix[:, cols]
