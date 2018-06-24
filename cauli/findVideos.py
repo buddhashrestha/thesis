@@ -23,6 +23,7 @@ x = str(df['person'].tolist()).replace("\'","")
 x = ast.literal_eval(x)
 y = numpy.array(x)
 y = y.astype('float32')
+y = y.reshape(1, 128)
 #now you can train x as you did t
 
 
