@@ -8,9 +8,7 @@ import os
 
 d = 128
 
-
 current_directory = os.getcwd()
-
 
 data_matrix = current_directory + '/data/person_to_video_matrix.csv'
 
@@ -20,11 +18,10 @@ cols.insert(0, cols.pop(cols.index('person')))
 df = df.ix[:, cols]
 
 x = str(df['person'].tolist()).replace("\'","")
-print(x)
 x = ast.literal_eval(x)
 y = numpy.array(x)
+print(y.shape)
 y = y.astype('float32')
-y = y.reshape(1, 128)
 #now you can train x as you did t
 
 
