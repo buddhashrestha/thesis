@@ -1,8 +1,9 @@
+import os,sys
+sys.path.append('../')
 from pyannoteVideo.pyannote.video.face.clustering import FaceClustering
 import pandas as pd
 import numpy as np
-import os,sys
-sys.path.append('../')
+
 from utils import file
 
 clustering = FaceClustering(threshold=0.6)
