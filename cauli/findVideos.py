@@ -47,7 +47,6 @@ q.append(leonard)
 q = numpy.array(q)
 print(q)
 
-exit(0)
 index.add(y)                  # add may be a bit slower as well
 
 D, I = index.search(q, k)     # actual search
