@@ -7,7 +7,7 @@ import numpy as np
 from utils import file
 
 clustering = FaceClustering(threshold=0.6)
-face_tracks, embeddings = clustering.model.preprocess('../pyannote-data/TheBigBangTheory.embedding.txt')
+face_tracks, embeddings = clustering.model.preprocess('../pyannote-data/willi.embedding.txt')
 
 result = clustering(face_tracks, features=embeddings)
 

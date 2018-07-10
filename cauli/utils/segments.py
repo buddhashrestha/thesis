@@ -18,5 +18,5 @@ class Segments(object):
         segments.append(each_segment)
         return segments
 
-c = Segments()
-print(c.find_continous_segments([2,3,4,7,8,9]))
+# c = Segments()
+# print(c.find_continous_segments([0, 1, 2, 3, 6, 7, 8, 12, 13, 20, 21]))
