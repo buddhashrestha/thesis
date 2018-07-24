@@ -5,7 +5,8 @@ from utils.segments import Segments
 from findVideos import findVideos
 import ast
 import json
-
+from bitmap.src.bitmap import BitMap
+from collections import deque
 #this comes from p1 and p2
 
 
@@ -15,15 +16,12 @@ def search(q,query_type):
     for each_video in videos:
         df_embeddings = pd.read_csv(str(each_video) + '/person_embeddings_mapping.csv',sep='\t')
         cols = list(df_embeddings)
-        print(cols)
-        cols = list(df_embeddings)
         cols.insert(0, cols.pop(cols.index('Embeddings')))
         df_embeddings = df_embeddings.ix[:, cols]
 
         x = str(df_embeddings['Embeddings'].tolist()).replace("\'", "")
         x = ast.literal_eval(x)
         y = numpy.array(x)
-        print(y.shape)
         y = y.astype('float32')
         d = 128
         nlist = 1
@@ -38,33 +36,18 @@ def search(q,query_type):
         index.add(y)  # add may be a bit slower as well
 
         D, I = index.search(q, k)  # actual search
-        print(I)  # neighbors of the 5 last queries
         pos = [0] * len(I)
         p = [0] * len(I)
         # if face is not present: then add to the list
         if I == [[]]:
             print("Not found")
-        # else:
-        #     pos1 = I[0][0]
-        #     pos2 = I[1][0]
-        #     p1 = df_embeddings.iloc[pos1]  # corresponding to q1 and q2
-        #     p2 = df_embeddings.iloc[pos2]  # for d2
-        #     p1 = list(df_embeddings.iloc[pos1, 2:])
-        #     p2 = list(df_embeddings.iloc[pos2, 2:])
-        #     print("p1:",p1[0])
-        #     print("p1:",p2[0])
+
         else:
             for i in range(len(I)):
                 pos[i] = I[i][0]
                 p[i] = list(df_embeddings.iloc[pos[i], 2:])
 
-        #this should be iterable according to query
-        ##similarity search!!
-        # person_1 = df_embeddings.loc[df_embeddings['Embeddings'] == q1]['person_label']
-        # person_2 = df_embeddings.loc[df_embeddings['embeddings'] == q2]['person_label']
-        #
         df_person_bitmap = pd.read_csv(str(each_video) +'/person_bitmap_vector.csv',sep='\t')
-        print(df_person_bitmap['person_label'])
         person_bitmap = [0] * len(p)
         for i in range(len(p)):
             person_bitmap[i] = df_person_bitmap.loc[df_person_bitmap['person_label'] == int(p[i][0])]['BitMap'].values[0]
@@ -72,27 +55,97 @@ def search(q,query_type):
             person_bitmap[i] = json.loads(person_bitmap[i])
             person_bitmap[i] = numpy.array(person_bitmap[i])
 
-        final = []
-        for a in zip(*person_bitmap):
-            element = 1.0
-            for x in a:
-                element = int(element * x)
-            final.append(str(element))
-        #instead of p1 and p2, use array
-        #then apply.. bitwise 'and' operation.
-        vector = "".join(final)
+        if query_type == 'next':
+            return next(person_bitmap[0],person_bitmap[1])
+        if query_type == 'eventually':
+            return eventually(person_bitmap[0], person_bitmap[1])
+        if query_type == 'is_before':
+            return is_a_before_b(person_bitmap[0],person_bitmap[1])
+        if query_type == 'interval':
+            return interval(person_bitmap)
 
-        print("Vector:",vector)
-        from bitmap.src.bitmap import BitMap
-        bm = BitMap.fromstring(vector)
-        x = numpy.array(list(bm.nonzero()))
-        x = len(vector)-x
-        x = x[::-1]
-        print("x: ",x)
-        #calculate segment now
-        c = Segments()
-        segs = c.find_continous_segments(x)
-        return segs
+def interval(person_bitmap):
+    final = []
+    for a in zip(*person_bitmap):
+        element = 1.0
+        for x in a:
+            element = int(element * x)
+        final.append(str(element))
+    #instead of p1 and p2, use array
+    #then apply.. bitwise 'and' operation.
+    vector = "".join(final)
+
+    bm = BitMap.fromstring(vector)
+    x = numpy.array(list(bm.nonzero()))
+    x = len(vector)-x
+    x = x[::-1]
+
+
+    #calculate segment now
+    c = Segments()
+    segs = c.find_continous_segments(x)
+
+    # eventually(person_bitmap[0],person_bitmap[1])
+    return segs
+
+def next(p1,p2):
+    p1_list = p1
+    p2_list = deque(p2)
+
+    p2_list.popleft()
+    p2_list = list(p2_list)
+
+    p1_list = p1_list[:len(p1_list)-2]
+
+    final = [0] * len(p1_list)
+    for i in range(len(p1_list)-1):
+        final[i] = p1_list[i] *  p2_list[i]
+
+    vector = "".join(str(v) for v in final)
+    bm = BitMap.fromstring(vector)
+    int_p = int(bm.tostring(), 2)
+    if (int_p > 0):
+        return True
+    else:
+        return False
+
+def eventually(p1, p2):
+    # bm_p1 = BitMap.fromstring(p1)
+    # bm_p2 = BitMap.fromstring(p2)
+    p1_list = deque(p1)
+    p2_list = deque(p2)
+    for a in p1:
+        if a != 1:
+            p1_list.popleft()
+            p2_list.popleft()
+        else:
+            break
+    p1_list = list(p1_list)
+    p2_list = list(p2_list)
+
+    p1_vector = "".join(str(v) for v in p1_list)
+    p2_vector = "".join(str(v) for v in p2_list)
+    p1_bm = BitMap.fromstring(p1_vector)
+    p2_bm = BitMap.fromstring(p2_vector)
+    int_p1 = int(p1_bm.tostring(),2)
+    int_p2 = int(p2_bm.tostring(),2)
+    if (int_p1>int_p2):
+        return True
+    else:
+        return False
+
+def is_a_before_b(p1,p2):
+    p1_vector = "".join(str(v) for v in p1)
+    p2_vector = "".join(str(v) for v in p2)
+    p1_bm = BitMap.fromstring(p1_vector)
+    p2_bm = BitMap.fromstring(p2_vector)
+    int_p1 = int(p1_bm.tostring(), 2)
+    int_p2 = int(p2_bm.tostring(), 2)
+    if (int_p1 > int_p2):
+        return True
+    else:
+        return False
+
 
 q1 = numpy.array(
 [-0.09394396, -0.0325009, 0.04033981, 0.058163, -0.07830061, -0.00957991, 0.00967481, -0.01413031,
@@ -138,6 +191,6 @@ q.append(q2)
 q = numpy.array(q)
 q = q.astype('float32')
 
-print("Search : ",search(q,"intervals"))
+# print("Search : ",search(q,"interval"))
 
 #TODO:loadup new video, run a person search on a custom photo using FaceDescriptor
