@@ -18,7 +18,9 @@ else:
     print("folder list: ",folder_lists)
     vid_num = int(max(folder_lists)) + 1
 
-vid_num = 1
+directory = "/home/buddha/thesis/cauli/data/"+ str(vid_num) +"/"
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 file_name = args.filename
 movie_name = file_name.rsplit(".")[0]
@@ -29,13 +31,13 @@ embeddings = movie_name + ".embedding.txt"
 
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-structure.py",
       "shot","--verbose","/home/buddha/thesis/pyannote-data/" + file_name,
-      "/home/buddha/thesis/cauli/data/"+ str(vid_num) +"/"+ shots_name])
+      directory+ shots_name])
 print("done with shots.")
 
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py",
       "track","--verbose","--every=0.5","/home/buddha/thesis/pyannote-data/" + file_name,
-      "/home/buddha/thesis/cauli/data/"+ str(vid_num) +"/"+ shots_name,
-      "/home/buddha/thesis/cauli/data/"+ str(vid_num) +"/"+ track_name])
+      directory + shots_name,
+      directory + track_name])
 print("done with track.")
 
 
@@ -55,4 +57,4 @@ cluster_and_save("./data/"+ str(vid_num) + "/"+  embeddings, vid_num)
 print("done with everything")
 print("finished..")
 
-#to run : python prepare.py -f "TheBigBangTheory.mkv"
+#to run : save the video to pyannote-data folder, then run : python prepare.py -f "TheBigBangTheory.mkv"

@@ -19,16 +19,18 @@ class FaceDescriptor(object):
     def getDescriptor(self):
         if os.path.isfile(self.image_path):
             #File is present
+            print(self.image_path)
             image = cv2.imread(self.image_path)
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             rects = detector(gray, 0)
             for (i, rect) in enumerate(rects):
                 landmark = dlib.shape_predictor(landmarks)(image, rect)
                 face_descriptor = facerec.compute_face_descriptor(image, landmark)
-            return numpy.array(face_descriptor)
+            return numpy.array(face_descriptor) #this doesn't work for no face in the photo
         # Return this string if file is not present.
         else:
-            return "File not found"
+            return "File not found."
 
 
 
+print(FaceDescriptor('/home/buddha/Desktop/photos/willferrel.jpg').getDescriptor())

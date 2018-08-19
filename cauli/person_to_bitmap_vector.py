@@ -73,7 +73,7 @@ def cluster_and_save(embeddings_file,vid_num):
     file_name = current_directory + "/data/" + str(vid_num) + '/person_embeddings_mapping.csv'
     data_matrix = current_directory + "/data/person_to_video_matrix.csv"
     if not(os.path.exists(data_matrix)):
-        df_matrix = pd.DataFrame(columns=['person','0'])
+        df_matrix = pd.DataFrame(columns=['person'])
         # df_matrix[0] = 0
         video_num = 1
         for each_label in result.labels():
@@ -87,6 +87,7 @@ def cluster_and_save(embeddings_file,vid_num):
         d = 128
         df = pd.read_csv(file_name, sep='\t')
         df_matrix = pd.read_csv(data_matrix,sep='\t')
+        df_matrix = df_matrix.loc[:, ~df_matrix.columns.str.contains('^Unnamed')]
         print("DF MATRIX before: ", df_matrix)
         cols = list(df_matrix)
         print("Cols before: ",cols)
