@@ -33,4 +33,4 @@ class FaceDescriptor(object):
 
 
 
-print(FaceDescriptor('/home/buddha/Desktop/photos/willferrel.jpg').getDescriptor())
+print(FaceDescriptor('/home/buddha/thesis/pyannote-data/jurgen.jpeg').getDescriptor())

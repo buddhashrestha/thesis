@@ -18,6 +18,7 @@ else:
     print("folder list: ",folder_lists)
     vid_num = int(max(folder_lists)) + 1
 
+# exit(0)
 directory = "/home/buddha/thesis/cauli/data/"+ str(vid_num) +"/"
 if not os.path.exists(directory):
     os.makedirs(directory)
@@ -28,6 +29,7 @@ shots_name = movie_name + ".shots.json"
 track_name = movie_name + ".track.txt"
 landmark_name = movie_name + ".landmarks.txt"
 embeddings = movie_name + ".embedding.txt"
+demo = movie_name+ ".track.mp4"
 
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-structure.py",
       "shot","--verbose","/home/buddha/thesis/pyannote-data/" + file_name,
@@ -40,6 +42,12 @@ call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py",
       directory + track_name])
 print("done with track.")
 
+call(["python","/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py", "demo",
+                       "/home/buddha/thesis/pyannote-data/" + file_name,
+                       directory + track_name,
+                       directory + demo])
+
+print("done with demo.")
 
 call(["python", "../pyannoteVideo/scripts/pyannote-face.py",
       "extract","--verbose","../pyannote-data/" + file_name,
@@ -50,7 +58,7 @@ call(["python", "../pyannoteVideo/scripts/pyannote-face.py",
       "./data/" + str(vid_num) + "/" +  embeddings])
 print("Done with embeddings.")
 
-from person_to_bitmap_vector import *
+from cauli.person_to_bitmap_vector import *
 
 cluster_and_save("./data/"+ str(vid_num) + "/"+  embeddings, vid_num)
 

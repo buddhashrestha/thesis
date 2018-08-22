@@ -1,6 +1,7 @@
 
 
 def cluster_and_save(embeddings_file,vid_num):
+
     import os
     import sys
     sys.path.append('../')
@@ -107,7 +108,7 @@ def cluster_and_save(embeddings_file,vid_num):
         #searching section
 
         nlist = 1
-        k = 1
+        k = 2
         quantizer = faiss.IndexFlatL2(d)  # the other index
         index = faiss.IndexIVFFlat(quantizer, d, nlist, faiss.METRIC_L2)
 
@@ -131,11 +132,21 @@ def cluster_and_save(embeddings_file,vid_num):
             else:
                 print("there is that person")
                 pos = I[0][0]
-                df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
-
+                z = y[pos]
+                print('person vector :', z)
+                dist = numpy.linalg.norm(z - q)
+                if dist < 0.578:
+                    df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
+                else:
+                    df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
+                    df_matrix = pd.concat([df_matrix, df2])
+    cols = list(df_matrix)
+    cols.insert(0, cols.pop(cols.index('person')))
+    df_matrix = df_matrix.ix[:, cols]
     print("DF_matrix after: ",df_matrix)
     file_name = current_directory + '/data/person_to_video_matrix.csv'
 
     with open(file_name, 'a') as f:
         df_matrix.to_csv(file_name, sep = '\t', index= False)
-
+#
+# cluster_and_save("./data/"+ str(2) + "/"+  "mm1.embedding.txt", 2)
