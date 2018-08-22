@@ -2,34 +2,35 @@ import numpy
 import pandas as pd
 import faiss
 import ast
-
+import os
 
 d = 128
-df = pd.read_csv('/home/buddha/thesis/cauli/data/person_to_video_matrix.csv', sep='\t')
-df_matrix = pd.read_csv('/home/buddha/thesis/cauli/data/person_to_video_matrix.csv',sep='\t')
-df_matrix = df_matrix.loc[:, ~df_matrix.columns.str.contains('^Unnamed')]
-print("DF MATRIX before: ", df_matrix)
-cols = list(df_matrix)
-print("Cols before: ",cols)
-cols.insert(0, cols.pop(cols.index('person')))
-df_matrix = df_matrix.ix[:, cols]
-
-x = str(df_matrix['person'].tolist()).replace("\'","")
-x = ast.literal_eval(x)
-y = numpy.array(x)
-print(type(y))
-y = y.astype('float32')
-#now you can train x as you did t
-print("Cols: ",cols)
-video_num = 1
-#by default every video is zero
-df_matrix[video_num] = 0
+# df = pd.read_csv('/home/buddha/thesis/cauli/data/person_to_video_matrix.csv', sep='\t')
+# df_matrix = pd.read_csv('/home/buddha/thesis/cauli/data/person_to_video_matrix.csv',sep='\t')
+# df_matrix = df_matrix.loc[:, ~df_matrix.columns.str.contains('^Unnamed')]
+# print("DF MATRIX before: ", df_matrix)
+# cols = list(df_matrix)
+# print("Cols before: ",cols)
+# cols.insert(0, cols.pop(cols.index('person')))
+# df_matrix = df_matrix.ix[:, cols]
+#
+# x = str(df_matrix['person'].tolist()).replace("\'","")
+# x = ast.literal_eval(x)
+# y = numpy.array(x)
+# print(type(y))
+# y = y.astype('float32')
+# #now you can train x as you did t
+# print("Cols: ",cols)
+# video_num = 1
+# #by default every video is zero
+# df_matrix[video_num] = 0
 
 y = []
 import os
 from cauli.FaceDescriptor import *
 for i in os.listdir("/home/buddha/Desktop/photos"):
     y.append(FaceDescriptor('/home/buddha/Desktop/photos/'+i).getDescriptor())
+
 y = numpy.array(y)
 
 y = y.astype('float32')
@@ -46,6 +47,48 @@ index.train(y)# t and y ma k farak cha?
 
 index.add(y)                  # add may be a bit slower as well
 
+leonard = [-0.13995799, 0.07357684, 0.06817903, -0.03358017, -0.14017977, 0.02780785, -0.00525929, -0.01784202,
+           0.06178749, -0.10179561, 0.18950391, -0.01475109, -0.27838451, -0.0266105, -0.08373968, 0.09460582,
+           -0.1788917, -0.17850886, -0.12365769, -0.14781366, 0.03512874, 0.00903247, -0.02803879, 0.03783317,
+           -0.16920707, -0.26304603, -0.06992229, -0.10061786, 0.05101402, -0.16632022, 0.11655138, 0.08433184,
+           -0.12079179, 0.03596556, -0.0121152, 0.12947829, 0.04827371, -0.08188809, 0.18349151, -0.00281307,
+           -0.15602723, 0.06405699, 0.04490693, 0.31951201, 0.17494193, 0.01719636, -0.0419702, -0.08516614,
+           0.12460594, -0.21499792, 0.06585026, 0.19651721, 0.09745228, 0.03903785, 0.10535515, -0.13724521,
+           0.08984233, 0.13477094, -0.21704961, 0.05335507, 0.0309218, -0.05781218, 0.0019028, -0.09391791,
+           0.0646577, 0.06179845, -0.08008289, -0.14667159, 0.20857613, -0.18729421, -0.06652444, 0.14170116,
+           -0.1157265, -0.1452689, -0.24668945, 0.04148631, 0.40796083, 0.21065351, -0.11024678, 0.02329403,
+           -0.01277202, -0.04557295, 0.07328524, 0.03643153, -0.17143802, -0.08823329, -0.10314541, 0.11035879,
+           0.15545008, 0.09105477, -0.0749627, 0.19225572, 0.03504357, -0.04319753, 0.07131915, 0.02174823,
+           -0.08037397, 0.02350202, -0.12592137, -0.0058411, 0.06064202, -0.16452999, -0.01263573, 0.0567708,
+           -0.13627924, 0.06755719, -0.01812054, -0.00742016, -0.0428388, 0.01858514, -0.18413505, 0.08322754,
+           0.24775918, -0.29474801, 0.18072528, 0.21811365, 0.03798047, 0.06725502, 0.17808905, 0.0480503,
+           -0.01554211, -0.12508231, -0.1766559, -0.07591728, 0.04641546, -0.08250329, 0.07233171, 0.03478055]
+
+qq = []
+qq.append(leonard)
+
+
+qq = numpy.array(qq)
+qq = qq.astype('float32')
+
+D, I = index.search(qq, 1)     # actual search
+print("I: ",I)
+#if face is not present: then add to the list
+if I ==[[]]:
+    print("theres no person there!!")
+    # df2 = pd.DataFrame({'person':q.tolist(),video_num:1})
+    # df_matrix = pd.concat([df_matrix,df2])
+else:
+    print("there is that person")
+    pos = I[0][0]
+    z = y[pos]
+    print('person vector :', z)
+    dist = numpy.linalg.norm(z - leonard)
+    print('dist :',dist)
+    # df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
+
+
+'''
 sheldon = [-0.09394396, -0.0325009, 0.04033981, 0.058163, -0.07830061, -0.00957991, 0.00967481, -0.01413031,
            0.09056109, 0.01226895, 0.26494166, -0.02123076, -0.24777047, -0.01763329, -0.07384738, 0.06715217,
            -0.12217229, -0.08997168, -0.07580122, -0.04950837, 0.04795098, 0.13332213, -0.01127091, 0.02197756,
@@ -146,12 +189,65 @@ will = [-2.04010773e-03,1.20580025e-01,1.68546409e-04,-6.81897327e-02
 ,-1.35316979e-02,4.61590365e-02,-1.06680952e-01,-1.28902614e-01
 ,1.43208429e-02,5.99296391e-03,-6.38523772e-02,2.34818906e-02]
 
+jurgen = [-0.07722384,0.03862969,0.11232487,-0.07928048,-0.12589082,-0.06844431
+,0.01876052,-0.02569746,0.12161407,-0.01321536,0.12557891,0.07807396
+,-0.26364088,-0.05781354,0.04420178,0.02651414,-0.08880096,-0.17571162
+,-0.12198005,-0.12226233,-0.05889008,0.01064788,-0.02659107,-0.00814604
+,-0.15042995,-0.24161445,-0.08560306,-0.11482064,0.14683066,-0.21525861
+,0.04174795,0.04448514,-0.20568976,-0.07468145,-0.009667,0.11196363
+,-0.0894431,-0.14120434,0.23966974,0.03678298,-0.17124149,-0.03769939
+,0.0307141,0.282462,0.2618497,-0.05116623,0.05773098,-0.07523727
+,0.1678014,-0.27086392,0.13853703,0.13747437,0.10369678,0.10628232
+,0.12423684,-0.21400465,0.07430235,0.07989737,-0.31081131,0.11694349
+,0.09688658,-0.09447797,-0.08675412,-0.06606281,0.13295445,0.04410006
+,-0.09748738,-0.14905056,0.14526504,-0.26489416,0.00999036,0.17978071
+,-0.05574533,-0.13209142,-0.29793444,0.06785395,0.32676262,0.19514124
+,-0.11643145,0.06936578,-0.07798179,-0.09348666,0.05119462,0.04209178
+,-0.10289548,0.0488796,-0.06156423,0.08948641,0.18388033,0.05236822
+,-0.02731201,0.15984327,0.01775069,-0.00681705,0.06842531,0.05611343
+,-0.09509671,-0.06190236,-0.08852672,0.02038449,0.04989311,-0.18726249
+,0.01208717,0.03383485,-0.14724502,0.1806177,0.02760591,-0.02794529
+,-0.08495249,-0.15567699,-0.14716242,0.04063524,0.23431684,-0.3523261
+,0.2479147,0.1689228,-0.01604912,0.0978321,0.08192257,0.02295081
+,-0.03542054,-0.09943051,-0.09774172,-0.0295199,-0.00292781,-0.05809616
+,0.10721888,0.04816229]
+
 qq = []
 qq.append(leonard)
 
 
 qq = numpy.array(qq)
 qq = qq.astype('float32')
+
+current_directory = os.getcwd()
+data_matrix = "/home/buddha/thesis/cauli/data/person_to_video_matrix.csv"
+df_matrix = pd.read_csv(data_matrix,sep='\t')
+df_matrix = df_matrix.loc[:, ~df_matrix.columns.str.contains('^Unnamed')]
+print("DF MATRIX before: ", df_matrix)
+cols = list(df_matrix)
+print("Cols before: ",cols)
+cols.insert(0, cols.pop(cols.index('person')))
+df_matrix = df_matrix.ix[:, cols]
+
+x = str(df_matrix['person'].tolist()).replace("\'","")
+x = ast.literal_eval(x)
+y = numpy.array(x)
+y = y.astype('float32')
+#now you can train x as you did t
+print("Cols: ",cols)
+
+d = 128
+#searching section
+
+nlist = 1
+k = 2
+quantizer = faiss.IndexFlatL2(d)  # the other index
+index = faiss.IndexIVFFlat(quantizer, d, nlist, faiss.METRIC_L2)
+
+
+index.train(y)# t and y ma k farak cha?
+
+index.add(y)
 
 
 D, I = index.search(qq, 1)     # actual search
@@ -166,6 +262,7 @@ else:
     pos = I[0][0]
     z = y[pos]
     print('person vector :', z)
-    dist = numpy.linalg.norm(z - leonard)
+    dist = numpy.linalg.norm(z - jurgen)
     print('dist :',dist)
     # df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
+'''
