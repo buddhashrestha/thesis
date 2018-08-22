@@ -108,7 +108,7 @@ def cluster_and_save(embeddings_file,vid_num):
         #searching section
 
         nlist = 1
-        k = 2
+        k = 1
         quantizer = faiss.IndexFlatL2(d)  # the other index
         index = faiss.IndexIVFFlat(quantizer, d, nlist, faiss.METRIC_L2)
 
@@ -118,28 +118,72 @@ def cluster_and_save(embeddings_file,vid_num):
         index.add(y)                  # add may be a bit slower as well
 
         for each_label in result.labels():
-            q = np.array(list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:]))
-            q = q.astype('float32')
-            q = q.reshape(1, 128)
-
-            D, I = index.search(q, k)     # actual search
+            # print(embeddings)
+            # q = np.array(list(embeddings.loc[embeddings['track'] == each_label].iloc[0,2:]))
+            # print("q is :",q)
+            # print(q.shape)
+            # q = q.astype('float32')
+            # q = q.reshape(1, 128)
+            p = embeddings.loc[embeddings['track'] == each_label].iloc[:,2:].values
+            # p = p.astype('float32')
+            # print("P:",p.astype('float32'))
+            # r=numpy.zeros((len(p),128))
+            r=[]
+            for i,t in enumerate(p):
+                temp = np.array(list(t))
+                temp = temp.astype('float32')
+                temp = temp.reshape(1,128)
+                # print("Temp :",)
+                # r[i] = temp
+                r.append(temp)
+            # v = r[0]
+            # print("v : ",r.shape)
+            # exit(0)
+            D, I = index.search(r[0], k)     # actual search
             print("I: ",I)
+
+
+
+            dist = -1
+            min = 1000
+            real_pos = 0
+            for j in r:
+                D, I = index.search(j, k)  # actual search
             #if face is not present: then add to the list
-            if I ==[[]]:
+                if not I == [[]]:
+                    pos = I[0][0]
+                    z = y[pos]
+                    dist = numpy.linalg.norm(z - j)
+                    if dist<min:
+                        real_pos = pos
+                        min = dist
+
+            if dist == -1:
                 print("theres no person there!!")
-                df2 = pd.DataFrame({'person':q.tolist(),video_num:1})
-                df_matrix = pd.concat([df_matrix,df2])
+                df2 = pd.DataFrame({'person': r[0].tolist(), video_num: 1})
+                df_matrix = pd.concat([df_matrix, df2])
             else:
-                print("there is that person")
-                pos = I[0][0]
-                z = y[pos]
-                print('person vector :', z)
-                dist = numpy.linalg.norm(z - q)
-                if dist < 0.578:
-                    df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
+                if min < 0.5:
+                    df_matrix.iloc[real_pos, df_matrix.columns.get_loc(video_num)] = 1
                 else:
-                    df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
+                    df2 = pd.DataFrame({'person': r[0].tolist(), video_num: 1})
                     df_matrix = pd.concat([df_matrix, df2])
+
+            # if I ==[[]]:
+            #     print("theres no person there!!")
+            #     df2 = pd.DataFrame({'person':q.tolist(),video_num:1})
+            #     df_matrix = pd.concat([df_matrix,df2])
+            # else:
+            #     print("there is that person")
+            #     pos = I[0][0]
+            #     z = y[pos]
+            #     print('person vector :', z)
+            #     dist = numpy.linalg.norm(z - q)
+            #     if dist < 0.578:
+            #         df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
+            #     else:
+            #         df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
+            #         df_matrix = pd.concat([df_matrix, df2])
     cols = list(df_matrix)
     cols.insert(0, cols.pop(cols.index('person')))
     df_matrix = df_matrix.ix[:, cols]
