@@ -52,13 +52,14 @@ Options:
 """
 
 from docopt import docopt
+import os,sys
+sys.path.append('../')
+from pyannoteLib.core import Timeline
+import pyannoteLib.core.json
 
-from pyannote.core import Timeline
-import pyannote.core.json
-
-from pyannote.video import __version__
-from pyannote.video import Video
-from pyannote.video import Shot, Thread
+from pyannoteLib.video import __version__
+from pyannoteLib.video import Video
+from pyannoteLib.video import Shot, Thread
 import sys
 
 def do_shot(video, output, height=50, window=2.0, threshold=1.0):
@@ -67,22 +68,22 @@ def do_shot(video, output, height=50, window=2.0, threshold=1.0):
     
     # print("Hey shots :",shots)
     with open(output, 'w') as fp:
-        pyannote.core.json.dump(shots, fp)
+        pyannoteLib.core.json.dump(shots, fp)
 
 def do_thread(video, shots, output, min_match=20, lookahead=24, verbose=False):
 
     with open(shots, 'r') as fp:
-        shots = pyannote.core.json.load(fp)
+        shots = pyannoteLib.core.json.load(fp)
     threads = Thread(video, shot=shots, lookahead=lookahead,
                      min_match=min_match, verbose=verbose)
     threads = threads()
     with open(output, 'w') as fp:
-        pyannote.core.json.dump(threads, fp)
+        pyannoteLib.core.json.dump(threads, fp)
 
 def do_scene(video, threads, output, verbose=False):
 
     with open(threads, 'r') as fp:
-        threads = pyannote.core.json.load(fp)
+        threads = pyannoteLib.core.json.load(fp)
     raise NotImplementedError('Not yet available')
     # scenes = Scene(video, thread=threads, verbose=verbose)
     # with open(output, 'w') as fp:

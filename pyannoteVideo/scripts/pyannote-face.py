@@ -90,14 +90,15 @@ Visualization options (demo):
 from __future__ import division
 
 from docopt import docopt
+import os,sys
+sys.path.append('../')
+from pyannoteLib.core import Annotation
+import pyannoteLib.core.json
 
-from pyannote.core import Annotation
-import pyannote.core.json
-
-from pyannote.video import __version__
-from pyannote.video import Video
-from pyannote.video import Face
-from pyannote.video import FaceTracking
+from pyannoteLib.video import __version__
+from pyannoteLib.video import Video
+from pyannoteLib.video import Face
+from pyannoteLib.video import FaceTracking
 
 from pandas import read_table
 
@@ -250,7 +251,7 @@ def track(video, shot, output,
                             track_max_gap=track_max_gap)
 
     with open(shot, 'r') as fp:
-        shot = pyannote.core.json.load(fp)
+        shot = pyannoteLib.core.json.load(fp)
 
     if isinstance(shot, Annotation):
         shot = shot.get_timeline()
@@ -412,7 +413,7 @@ def demo(filename, tracking, output, t_start=0., t_end=None, shift=0.,
     if t_end is None:
         t_end = video.duration
 
-    clip.subclip(t_start, t_end).write_videofile(output, fps=video.frame_rate)
+    clip.subclip(t_start, t_end).write_videofile(output, fps=video.frame_rate,audio_codec='aac')
 
 if __name__ == '__main__':
 
