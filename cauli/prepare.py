@@ -60,7 +60,7 @@ print("Done with embeddings.")
 
 from cauli.person_to_bitmap_vector import *
 
-cluster_and_save("./data/"+ str(vid_num) + "/"+  embeddings, vid_num)
+# cluster_and_save("./data/"+ str(vid_num) + "/"+  embeddings, vid_num)
 
 print("done with everything")
 print("finished..")

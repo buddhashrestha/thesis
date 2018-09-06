@@ -54,7 +54,7 @@ def findVideos(q):
     index.add(y)                  # add may be a bit slower as well
 
     D, I = index.search(q, k)     # actual search
-    print(I)                  # neighbors of the 5 last queries
+    print("I: ",I)                  # neighbors of the 5 last queries
     pos = [0] * len(I)
     p = [0] * len(I)
     #if face is not present: then add to the list
@@ -63,7 +63,7 @@ def findVideos(q):
     else:
         for i in range(len(I)):
             pos[i] = I[i][0]
-            p[i] = list(df.iloc[pos[i], 2:])
+            p[i] = list(df.iloc[pos[i], 1:])
 
     final = []
     for a in zip(*p):
@@ -101,6 +101,6 @@ q.append(q2)
 q = numpy.array(q)
 q = q.astype('float32')
 
-findVideos(q)
+# findVideos(q)
 #get the videos v1,v2,v3... iterate over all the videos using folder structure in the search.py
 #pass bm to search module for p1 and p2

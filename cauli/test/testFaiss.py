@@ -28,8 +28,33 @@ d = 128
 y = []
 import os
 from cauli.FaceDescriptor import *
-for i in os.listdir("/home/buddha/Desktop/photos"):
-    y.append(FaceDescriptor('/home/buddha/Desktop/photos/'+i).getDescriptor())
+#TODO: do it if the file doesnot exists!!
+file_name = "/home/buddha/thesis/cauli/data/person_to_video_matrix.csv"
+j = 0
+df_matrix = pd.read_csv(file_name, sep='\t')
+df_matrix = df_matrix.loc[:, ~df_matrix.columns.str.contains('^Unnamed')]
+cols = list(df_matrix)
+cols.insert(0, cols.pop(cols.index('person')))
+df_matrix = df_matrix.ix[:, cols]
+
+for i in os.listdir("/home/buddha/Desktop/photos/"):
+    q = FaceDescriptor('/home/buddha/Desktop/photos/'+i).getDescriptor()
+    y.append(q)
+
+    # df_matrix[0] = 0
+    video_num = 1
+
+    q = q.astype('float32')
+    q = q.reshape(1, 128)
+    # if face is not present: then add to the list
+    df2 = pd.DataFrame({'person': q.tolist()})
+    df_matrix = pd.concat([df_matrix, df2])
+    j= j +1
+#
+print(df_matrix)
+with open(file_name, 'a') as f:
+    df_matrix.to_csv(file_name, sep = '\t', index= False)
+exit(0)
 
 y = numpy.array(y)
 
