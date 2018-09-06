@@ -37,10 +37,10 @@ from sortedcollections import ValueSortedDict
 from pandas import read_table
 from pyannoteLib.core import Segment, Annotation
 
-from pyannote.algorithms.clustering.hac import \
+from pyannoteLib.algorithms.clustering.hac import \
     HierarchicalAgglomerativeClustering
-from pyannote.algorithms.clustering.hac.model import HACModel
-from pyannote.algorithms.clustering.hac.stop import DistanceThreshold
+from pyannoteLib.algorithms.clustering.hac.model import HACModel
+from pyannoteLib.algorithms.clustering.hac.stop import DistanceThreshold
 # from pyannote.algorithms.clustering.hac.constraint import DoNotCooccur
 
 from scipy.spatial.distance import euclidean, pdist, cdist, squareform

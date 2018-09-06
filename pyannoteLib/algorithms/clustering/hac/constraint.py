@@ -33,7 +33,7 @@ from __future__ import unicode_literals
 
 from xarray import DataArray
 import numpy as np
-from pyannote.core import Segment
+from pyannoteLib.core import Segment
 from scipy.sparse.csgraph import connected_components
 
 class HACConstraint(object):

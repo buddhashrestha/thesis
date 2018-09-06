@@ -31,11 +31,11 @@ from collections import deque
 from itertools import combinations
 import cv2
 import networkx as nx
-from pyannote.core import Annotation
-from pyannote.core.time import _t_iter as getLabelGenerator
+from pyannoteLib.core import Annotation
+from pyannoteLib.core.time import _t_iter as getLabelGenerator
 from tqdm import tqdm
 import warnings
-from pyannote.core.util import pairwise
+from pyannoteLib.core.util import pairwise
 
 OPENCV = int(cv2.__version__.split('.')[0])
 

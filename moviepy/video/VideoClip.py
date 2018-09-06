@@ -269,7 +269,7 @@ class VideoClip(Clip):
             if ext in ['ogv', 'webm']:
                 audio_codec = 'libvorbis'
             else:
-                audio_codec = 'libmp3lame'
+                audio_codec = 'libmp3lame0'
         elif audio_codec == 'raw16':
             audio_codec = 'pcm_s16le'
         elif audio_codec == 'raw32':

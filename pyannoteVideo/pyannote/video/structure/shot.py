@@ -31,7 +31,7 @@ import itertools
 import numpy as np
 from ..video import Video
 import scipy.signal
-from pyannote.core import Segment
+from pyannoteLib.core import Segment
 
 OPENCV = int(cv2.__version__.split('.')[0])
 
