@@ -16,6 +16,19 @@ import cv2
 
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
+
+def shape_to_np(shape, dtype="int"):
+    # initialize the list of (x, y)-coordinates
+    coords = np.zeros((68, 2), dtype=dtype)
+
+    # loop over the 68 facial landmarks and convert them
+    # to a 2-tuple of (x, y)-coordinates
+    for i in range(0, 68):
+        coords[i] = (shape.part(i).x, shape.part(i).y)
+
+    # return the list of (x, y)-coordinates
+    return coords
+
 p = "/home/buddha/thesis/dlib-models/shape_predictor_68_face_landmarks.dat"
 landmarks="/home/buddha/thesis/dlib-models/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
@@ -35,7 +48,7 @@ for (i, rect) in enumerate(rects):
     # convert the facial landmark (x, y)-coordinates to a NumPy
     # array
     shape = predictor(gray, rect)
-    shape = face_utils.shape_to_np(shape)
+    shape = shape_to_np(shape)
 
     # convert dlib's rectangle to a OpenCV-style bounding box
     # [i.e., (x, y, w, h)], then draw the face bounding box
@@ -49,7 +62,7 @@ for (i, rect) in enumerate(rects):
     # loop over the (x, y)-coordinates for the facial landmarks
     # and draw them on the image
     for (x, y) in shape:
-        cv2.circle(image, (x, y), 1, (0, 0, 255), -1)
+        cv2.circle(image, (x, y), 4, (0, 0, 255), -4)
 
 # show the output image with the face detections + facial landmarks
 cv2.imshow("Output", image)

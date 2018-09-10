@@ -6,6 +6,34 @@ import os
 import io
 
 
+def check_intersection(segment_start,segment_end,each_interval):
+    start_end_points = each_interval.split(":")
+    start = float(start_end_points[0])
+    end = float(start_end_points[1])
+    if start >= segment_start and end<=segment_end: #then we have that person in that interval
+        return True
+
+
+def generate_face_timeline(sorted_segments,vid_num):
+    column_list =[]
+    current_directory = os.getcwd()
+    df_person = pd.DataFrame(columns=['index','segment'])
+
+    i = 0
+    for val in sorted_segments:
+        if i == len(sorted_segments)-1:
+            print("last element")
+            break
+        print(i)
+        df_len = len(df_person)
+        df_person = df_person.append({'index': int(i)}, ignore_index=True)  # add a person to the index
+        df_person.loc[[df_len], 'segment'] = str(sorted_segments[i])+":"+str(sorted_segments[i+1])
+        i = i + 1
+
+    file_name = current_directory + "/data/" + str(vid_num) + '/person_segment.csv'
+    with open(file_name, 'a') as f:
+        return df_person.to_csv(file_name, sep = '\t', index= False)
+
 
 def cluster_and_save(embeddings_file,vid_num):
 
@@ -64,6 +92,33 @@ def cluster_and_save(embeddings_file,vid_num):
 
         index.add(y)  # add may be a bit slower as well
 
+    columns_list = []
+    columns_list.append("person")
+    sorted_segments = []
+    for each_segment in result.itersegments():
+        sorted_segments.append(float(each_segment._get_start())+ float(0.00005))
+        sorted_segments.append(float(each_segment._get_end()))
+    sorted_segments = sorted(list(set(sorted_segments)))
+    print("len : ",len(sorted_segments))
+
+    # for i, val in enumerate(sorted_segments):
+        # if i == len(sorted_segments)-1:
+        #     print("last element")df_p
+        #     break
+        # print(i)
+        # columns_list.append(str(sorted_segments[i])+"-"+str(sorted_segments[i+1]))
+
+    df_p = generate_face_timeline(sorted_segments,vid_num)
+    person_segment_path = current_directory + "/data/" + str(vid_num) + "/person_segment.csv"
+    if (os.path.exists(person_segment_path)):
+        person_segment = pd.read_csv(person_segment_path, sep='\t')
+
+    print(list(person_segment['index'].tolist()))
+
+    # exit(0)
+    u = list(person_segment['index'].tolist())
+    u.insert(0,'person_label')
+    df_person = pd.DataFrame(columns=list(person_segment['index'].tolist()))
 
 
     for each_label in result.labels():
@@ -80,6 +135,7 @@ def cluster_and_save(embeddings_file,vid_num):
             min = 1000
             real_pos = 0
             for j in r:
+                print("J:",j)
                 D, I = index.search(j, 1)  # actual search
                 # if face is not present: then add to the list
                 if not I == [[]]:
@@ -102,29 +158,47 @@ def cluster_and_save(embeddings_file,vid_num):
 
         else:
             embeddings_labels_mappings[each_label] = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
-        temp = result.itersegments()
+        time_segment_list = []
+
+        # for each_segment in time_segment_list:
+        #     df_person[each_segment]
+        df_len = len(df_person)
+        # df_person.loc[[df_len], "person"] = each_label
+        df_person = df_person.append({'person_label': each_label}, ignore_index=True) #add a person to the index
+
+        person_segment_path = current_directory + "/data/"+str(vid_num)+"/person_segment.csv"
+        if (os.path.exists(person_segment_path)):
+            person_segment = pd.read_csv(person_segment_path, sep='\t')
+
         for each_segment in result.itersegments():
             if each_label == result.get_labels(each_segment).pop():
-                for i in range(int(each_segment._get_start()),int(each_segment._get_end())):
-                    try:
-                        ar[i] = 1
-                    except:
-                        print("I :", i)
+                for index1, each_row in person_segment.iterrows():
+                    each_interval = each_row['segment']
+                    each_index = each_row['index']
+                    if not each_interval == 'person':
+                        if check_intersection(float(each_segment._get_start()),float(each_segment._get_end()),each_interval):
+                            df_person.loc[[df_len], each_index] = int(1)
+            # df_person.loc[[df_len], "person"] = each_label
 
-        person[each_label] = ar
-        ar = [0] * video_duration
-
-    df_person = pd.DataFrame(list(person.items()), columns=['person_label', 'BitMap'])
+            # df_person[each_segment._get_start()+"-"+each_segment._get_end()]=
+            # if each_label == result.get_labels(each_segment).pop():
+            #     df_person.loc[[df_len], str(each_segment._get_start()) + "-" + str(each_segment._get_end())] = 1
+            # else:
+            #     df_person.loc[[df_len], str(each_segment._get_start()) + "-" + str(each_segment._get_end())] = 0
+    #             for i in range(int(each_segment._get_start()),int(each_segment._get_end())):
+    #                 try:
+    #                     ar[i] = 1
+    #                 except:
+    #                     print("I :", i)
+    #
+    #     person[each_label] = ar
+    #     ar = [0] * video_duration
+    #
+    # df_person = pd.DataFrame(list(person.items()), columns=['person_label', 'BitMap'])
+    print("Df person ", df_person)
+    # exit(0)
     df_embeddings = pd.DataFrame(list(embeddings_labels_mappings.items()), columns=['person_label', 'Embeddings'])
 
-    # vid_num = 2
-    # print("Current directory: ",current_directory + "/data/")
-    # folder_lists = [name for name in os.listdir(current_directory + "/data/" ) if os.path.isdir(current_directory + "/data/"+name)]
-    # if folder_lists == []:
-    #     vid_num = 1
-    # else:
-    #     print("folder list: ",folder_lists)
-    #     vid_num = int(max(folder_lists)) + 1
     print("vid_num :",vid_num)
 
     file.check_directory(current_directory + "/data/" + str(vid_num))
@@ -132,7 +206,7 @@ def cluster_and_save(embeddings_file,vid_num):
     file_name = current_directory + "/data/" + str(vid_num) + '/person_bitmap_vector.csv'
     with open(file_name, 'a') as f:
         df_person.to_csv(file_name, sep = '\t', index= False)
-
+    exit(0)
     file_name = current_directory + "/data/" + str(vid_num) + '/person_embeddings_mapping.csv'
     with open(file_name, 'a') as f:
         df_embeddings.to_csv(file_name, sep = '\t', index= False)
@@ -188,27 +262,14 @@ def cluster_and_save(embeddings_file,vid_num):
         index.add(y)                  # add may be a bit slower as well
 
         for each_label in result.labels():
-            # print(embeddings)
-            # q = np.array(list(embeddings.loc[embeddings['track'] == each_label].iloc[0,2:]))
-            # print("q is :",q)
-            # print(q.shape)
-            # q = q.astype('float32')
-            # q = q.reshape(1, 128)
             p = embeddings.loc[embeddings['track'] == each_label].iloc[:,2:].values
-            # p = p.astype('float32')
-            # print("P:",p.astype('float32'))
-            # r=numpy.zeros((len(p),128))
             r=[]
             for i,t in enumerate(p):
                 temp = np.array(list(t))
                 temp = temp.astype('float32')
                 temp = temp.reshape(1,128)
-                # print("Temp :",)
-                # r[i] = temp
                 r.append(temp)
-            # v = r[0]
-            # print("v : ",r.shape)
-            # exit(0)
+
             D, I = index.search(r[0], k)     # actual search
             print("I: ",I)
 
@@ -239,21 +300,6 @@ def cluster_and_save(embeddings_file,vid_num):
                     df2 = pd.DataFrame({'person': r[0].tolist(), video_num: 1})
                     df_matrix = pd.concat([df_matrix, df2])
 
-            # if I ==[[]]:
-            #     print("theres no person there!!")
-            #     df2 = pd.DataFrame({'person':q.tolist(),video_num:1})
-            #     df_matrix = pd.concat([df_matrix,df2])
-            # else:
-            #     print("there is that person")
-            #     pos = I[0][0]
-            #     z = y[pos]
-            #     print('person vector :', z)
-            #     dist = numpy.linalg.norm(z - q)
-            #     if dist < 0.578:
-            #         df_matrix.iloc[pos, df_matrix.columns.get_loc(video_num)] = 1
-            #     else:
-            #         df2 = pd.DataFrame({'person': q.tolist(), video_num: 1})
-            #         df_matrix = pd.concat([df_matrix, df2])
     cols = list(df_matrix)
     cols.insert(0, cols.pop(cols.index('person')))
     df_matrix = df_matrix.ix[:, cols]
@@ -263,5 +309,5 @@ def cluster_and_save(embeddings_file,vid_num):
     with open(file_name, 'a') as f:
         df_matrix.to_csv(data_matrix, sep = '\t', index= False)
 
-cluster_and_save("./data/"+ str(2) + "/"+  "friends1_720.embedding.txt", 2)
+cluster_and_save("./data/"+ str(1) + "/"+  "friends2_240.embedding.txt", 1)
 #
