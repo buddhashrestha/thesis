@@ -309,5 +309,5 @@ def cluster_and_save(embeddings_file,vid_num):
     with open(file_name, 'a') as f:
         df_matrix.to_csv(data_matrix, sep = '\t', index= False)
 
-cluster_and_save("./data/"+ str(1) + "/"+  "friends2_240.embedding.txt", 1)
+cluster_and_save("./data/"+ str(2) + "/"+  "friends1_720.embedding.txt", 2)
 #

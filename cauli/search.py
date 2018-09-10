@@ -55,18 +55,7 @@ def search(q,query_type):
         for i in range(len(p)):
             x = df_person_bitmap.loc[df_person_bitmap['person_label'] == int(p[i]), df_person_bitmap.columns != 'person_label'].values[0]
             x[numpy.isnan(x)] = 0
-            print("A : ",x)
             person_bitmap[i] = x.astype(int)
-            person_bitmap[i] = str(person_bitmap[i]).replace("\'", "")
-            person_bitmap[i] = str(person_bitmap[i]).replace("\n", "")
-            # print(person_bitmap)
-            # person_bitmap[i] = json.loads(person_bitmap[i])
-            person_bitmap[i] = numpy.array(person_bitmap[i])
-            print(person_bitmap)
-
-
-
-        print(person_bitmap)
 
         if query_type == 'next':
             timings[each_video] = next(person_bitmap[0],person_bitmap[1])
@@ -84,6 +73,7 @@ def interval(person_bitmap):
     final = []
     for a in zip(*person_bitmap):
         element = 1.0
+        print("a:",a)
         for x in a:
             element = int(element * x)
         final.append(str(element))
@@ -276,7 +266,7 @@ q = []
 # q.append(howard)
 
 q.append(rachel)
-
+# q.append(ross)
 q = numpy.array(q)
 q = q.astype('float32')
 
