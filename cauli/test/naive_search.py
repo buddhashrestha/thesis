@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from cauli.findVideos import findVideos
 import faiss
+import datetime
 
 def search(q,query_type):
     videos = findVideos(q)
@@ -47,16 +48,23 @@ def search(q,query_type):
         # print(df_person_bitmap.loc[:])
         print("P: ",p)
         table = pd.read_csv("/home/buddha/thesis/cauli/data/" + str(each_video) + '/person_segment_naive.csv', sep='\t')
+
+
+
+
+
         x = table.loc[table['person'] == int(p[0]), table.columns != 'person']['segment'].iloc[0]
         y = table.loc[table['person'] == int(p[1]), table.columns != 'person']['segment'].iloc[0]
         x = ast.literal_eval(x)
         x = numpy.array(x, dtype=float)
         y = ast.literal_eval(y)
         y = numpy.array(y, dtype=float)
-        print("Y: ", y)
-        print("X: ", x)
+        a = datetime.datetime.now()
         print("Intersectin: ",list(return_intersections(x, y)))
         # exit(0)
+        b = datetime.datetime.now()
+        c = b - a
+        print("time required: ", c.microseconds)
     return (list(return_intersections(x, y)))
 
 
