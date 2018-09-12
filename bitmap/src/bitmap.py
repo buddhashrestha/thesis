@@ -154,3 +154,4 @@ class BitMap(object):
             elif bitstring[-i-1] != '0':
                 raise Exception("Invalid bit string!")
         return bm
+zz

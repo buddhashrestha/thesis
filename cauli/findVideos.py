@@ -24,7 +24,7 @@ def findVideos(q):
 
     current_directory = os.getcwd()
 
-    data_matrix = current_directory + '/data/person_to_video_matrix.csv'
+    data_matrix = '/home/buddha/thesis/cauli/data/person_to_video_matrix.csv'
 
     df = pd.read_csv(data_matrix,sep='\t')
     cols = list(df)
@@ -78,7 +78,7 @@ def findVideos(q):
 
     # import os,sys
     # sys.path.append('../')
-    from bitmap.src.bitmap import BitMap
+    from cauli.bitmap.src.bitmap import BitMap
     bm = BitMap.fromstring(vector)
     # print(bm.nonzero())
     # videos = [x.__add__(1) for x in bm.nonzero()]
