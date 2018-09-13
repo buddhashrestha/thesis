@@ -60,12 +60,12 @@ def search(q,query_type):
         y = ast.literal_eval(y)
         y = numpy.array(y, dtype=float)
         a = datetime.datetime.now()
-        print("Intersectin: ",list(return_intersections(x, y)))
-        # exit(0)
-        b = datetime.datetime.now()
-        c = b - a
-        print("time required: ", c.microseconds)
-    return (list(return_intersections(x, y)))
+        result = list(return_intersections(x, y))   #60us
+
+        # b = datetime.datetime.now()
+        # c = b - a
+        # print("time required: ", c.microseconds)
+    return result
 
 
 def interval(person_bitmap):
@@ -78,10 +78,10 @@ def interval(person_bitmap):
     x = ast.literal_eval(x)
     x = numpy.array(x, dtype=float)
 
-    y = np.fromstring(y[2:-2], sep=',').astype(float)
+    # y = np.fromstring(y[2:-2], sep=',').astype(float)
     #also can be done like this,
-    # y = ast.literal_eval(y)
-    # y = numpy.array(y, dtype=float)
+    y = ast.literal_eval(y)
+    y = numpy.array(y, dtype=float)
     print("Y: ",y)
     print("X: ",x)
     # print(list(return_intersections(x, y)))

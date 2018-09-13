@@ -18,9 +18,9 @@ def generate_face_timeline(sorted_segments,vid_num):
     column_list =[]
     current_directory = os.getcwd()
     df_person = pd.DataFrame(columns=['index','segment'])
-
-    i = 0
-    for val in sorted_segments:
+    print("Sorted segment: ",sorted_segments)
+    # i = 0
+    for i,val in enumerate(sorted_segments):
         if i == len(sorted_segments)-1:
             print("last element")
             break
@@ -28,8 +28,11 @@ def generate_face_timeline(sorted_segments,vid_num):
         df_len = len(df_person)
         df_person = df_person.append({'index': int(i)}, ignore_index=True)  # add a person to the index
         df_person.loc[[df_len], 'segment'] = str(sorted_segments[i])+":"+str(sorted_segments[i+1])
-        i = i + 1
-
+        print(sorted_segments[i],sorted_segments[i+1])
+        print(df_person)
+        print("\n\n\n")
+        # i = i + 1
+    # exit(0)
     file_name = current_directory + "/data/" + str(vid_num) + '/person_segment.csv'
     with open(file_name, 'a') as f:
         return df_person.to_csv(file_name, sep = '\t', index= False)
@@ -108,7 +111,7 @@ def cluster_and_save(embeddings_file,vid_num):
         # print(i)
         # columns_list.append(str(sorted_segments[i])+"-"+str(sorted_segments[i+1]))
 
-    df_p = generate_face_timeline(sorted_segments,vid_num)
+    # df_p = generate_face_timeline(sorted_segments,vid_num)
     person_segment_path = current_directory + "/data/" + str(vid_num) + "/person_segment.csv"
     if (os.path.exists(person_segment_path)):
         person_segment = pd.read_csv(person_segment_path, sep='\t')
@@ -135,7 +138,6 @@ def cluster_and_save(embeddings_file,vid_num):
             min = 1000
             real_pos = 0
             for j in r:
-                print("J:",j)
                 D, I = index.search(j, 1)  # actual search
                 # if face is not present: then add to the list
                 if not I == [[]]:
@@ -309,5 +311,49 @@ def cluster_and_save(embeddings_file,vid_num):
     with open(file_name, 'a') as f:
         df_matrix.to_csv(data_matrix, sep = '\t', index= False)
 
-cluster_and_save("./data/"+ str(2) + "/"+  "friends1_720.embedding.txt", 2)
+
+
+def cluster_and_save_naive(embeddings_file,vid_num):
+
+    import os
+    import sys
+    sys.path.append('../')
+    from pyannoteVideo.pyannote.video.face.clustering import FaceClustering
+    import pandas as pd
+    import numpy as np
+
+
+    clustering = FaceClustering(threshold=0.6)
+    face_tracks, embeddings = clustering.model.preprocess(embeddings_file)
+    #
+    result = clustering(face_tracks, features=embeddings)
+    #
+    current_directory = os.getcwd()
+
+    person_segment_path = current_directory + "/data/" + str(vid_num) + "/person_segment_naive.csv"
+    person_segment_naive = pd.DataFrame(columns=['person', 'segments'])
+
+    for each_label in result.labels():
+        segments = result.label_timeline(each_label)
+        dictionary = {}
+        r = []
+        for each_segment in segments:
+            l = []
+            l.append(each_segment._get_start())
+            l.append(each_segment._get_end())
+            r.append(l)
+
+        df_len = len(person_segment_naive)
+        print(r)
+        person_segment_naive = person_segment_naive.append({'person': each_label,'segment':[]},  ignore_index=True)
+        person_segment_naive.at[df_len, 'segment'] = r
+        # ,'segment':r}, ignore_index=True)  # add a person to the index
+
+    with open(person_segment_path, 'a') as f:
+        person_segment_naive.to_csv(person_segment_path, sep = '\t', index= False)
+
+
+cluster_and_save_naive("./data/"+ str(1) + "/"+  "friends2_240.embedding.txt", 1)
 #
+
+

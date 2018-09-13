@@ -49,13 +49,16 @@ def search(q,query_type):
 
 
         df_person_bitmap = pd.read_csv("data/"+str(each_video) +'/person_bitmap_vector.csv',sep='\t')
+        df_person_bitmap = df_person_bitmap.loc[:, ~df_person_bitmap.columns.str.contains('^Unnamed')]
         person_bitmap = [0] * len(p)
-        # print(df_person_bitmap.loc[:])
+
+
 
         for i in range(len(p)):
             x = df_person_bitmap.loc[df_person_bitmap['person_label'] == int(p[i]), df_person_bitmap.columns != 'person_label'].values[0]
             x[numpy.isnan(x)] = 0
             person_bitmap[i] = x.astype(int)
+
 
         if query_type == 'next':
             timings[each_video] = next(person_bitmap[0],person_bitmap[1])
@@ -66,32 +69,46 @@ def search(q,query_type):
         if query_type == 'interval':
             timings[each_video] = interval(person_bitmap)
 
+
+
     return timings
 
 
-def interval(person_bitmap):
-    final = []
-    for a in zip(*person_bitmap):
-        element = 1.0
-        print("a:",a)
-        for x in a:
-            element = int(element * x)
-        final.append(str(element))
-    #instead of p1 and p2, use array
-    #then apply.. bitwise 'and' operation.
-    vector = "".join(final)
-
-    bm = BitMap.fromstring(vector)
-    x = numpy.array(list(bm.nonzero()))
-    x = len(vector)-x
-    x = x[::-1]
+def interval(person_bitmap):#total 97us
+################################# 68us
+    a1 = datetime.datetime.now()
 
 
+    a = person_bitmap[0]
+    b = person_bitmap[1]
+
+    c= a & b
+
+#     o = numpy.array([1], dtype=numpy.object) << numpy.arange(len(a))[::-1]
+#     t = numpy.dot(a, o)
+#     o = numpy.array([1], dtype=numpy.object) << numpy.arange(len(b))[::-1]
+#     q = numpy.dot(b, o)
+#     b = datetime.datetime.now()
+#     # c = b-a
+#     # print("time required: ",c.microseconds)
+# ########### after data preparation : 30us
+#     c = t & q   #1us
+
+################################## 16us
+
+    #REF: https://stackoverflow.com/questions/29091869/convert-bitstring-string-of-1-and-0s-to-numpy-array
+    # c = numpy.array(map(int, bin(c)[2:]))#numpy.fromstring(bin(c)[2:], 'u1') - ord('0')   ##16us
+    x = numpy.where(c)[0]
+    # print(x)
+    # x = len(person_bitmap[0]) - x
+    # x = x[::-1]
+
+################################# 13us
     #calculate segment now
     c = Segments()
     segs = c.find_continous_segments(x)
 
-    # eventually(person_bitmap[0],person_bitmap[1])
+##################################
     return segs
 
 def next(p1,p2):
@@ -116,7 +133,7 @@ def next(p1,p2):
         return False
 
 def eventually(p1, p2):
-    # bm_p1 = BitMap.fromstring(p1)
+    # bm_p1  a = datetime.datetime.now()= BitMap.fromstring(p1)
     # bm_p2 = BitMap.fromstring(p2)
     p1_list = deque(p1)
     p2_list = deque(p2)
@@ -264,12 +281,17 @@ q = []
 
 # q.append(sheldon)
 # q.append(howard)
+import datetime
 
 q.append(rachel)
-# q.append(ross)
+q.append(ross)
 q = numpy.array(q)
 q = q.astype('float32')
 
+a = datetime.datetime.now()
 print("Search : ",search(q,"interval"))
+b = datetime.datetime.now()
+c = b-a
+print("time required: ",c.microseconds)
 
 #TODO:loadup new video, run a person search on a custom photo using FaceDescriptor

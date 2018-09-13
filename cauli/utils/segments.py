@@ -3,7 +3,6 @@ class Segments(object):
         """Find the continous segments here"""
         if len(array) == 0:
             return []
-        print("Array: ",array )
         prev = array[0]
         segments = []
         start = array[0]
