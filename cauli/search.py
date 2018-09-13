@@ -74,34 +74,14 @@ def search(q,query_type):
     return timings
 
 
-def interval(person_bitmap):#total 97us
-################################# 68us
-    a1 = datetime.datetime.now()
+def interval(person_bitmap):#total 30us
+    #################################
 
+    c = numpy.array(person_bitmap)
 
-    a = person_bitmap[0]
-    b = person_bitmap[1]
+    c = c.all(axis=0)
 
-    c = a & b
-
-#     o = numpy.array([1], dtype=numpy.object) << numpy.arange(len(a))[::-1]
-#     t = numpy.dot(a, o)
-#     o = numpy.array([1], dtype=numpy.object) << numpy.arange(len(b))[::-1]
-#     q = numpy.dot(b, o)
-#     b = datetime.datetime.now()
-#     # c = b-a
-#     # print("time required: ",c.microseconds)
-# ########### after data preparation : 30us
-#     c = t & q   #1us
-
-################################## 16us
-
-    #REF: https://stackoverflow.com/questions/29091869/convert-bitstring-string-of-1-and-0s-to-numpy-array
-    # c = numpy.array(map(int, bin(c)[2:]))#numpy.fromstring(bin(c)[2:], 'u1') - ord('0')   ##16us
-    x = numpy.where(c)[0]
-    # print(x)
-    # x = len(person_bitmap[0]) - x
-    # x = x[::-1]
+    x = numpy.where(c)[False]
 
 ################################# 13us
     #calculate segment now
