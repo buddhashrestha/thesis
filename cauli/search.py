@@ -82,7 +82,7 @@ def interval(person_bitmap):#total 97us
     a = person_bitmap[0]
     b = person_bitmap[1]
 
-    c= a & b
+    c = a & b
 
 #     o = numpy.array([1], dtype=numpy.object) << numpy.arange(len(a))[::-1]
 #     t = numpy.dot(a, o)
