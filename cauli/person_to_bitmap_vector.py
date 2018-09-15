@@ -83,7 +83,6 @@ def cluster_and_save(embeddings_file,vid_num):
         video_num = vid_num
         # by default every video is zero
         df_matrix[video_num] = 0
-
         # searching section
 
         nlist = 1
@@ -111,7 +110,7 @@ def cluster_and_save(embeddings_file,vid_num):
         # print(i)
         # columns_list.append(str(sorted_segments[i])+"-"+str(sorted_segments[i+1]))
 
-    # df_p = generate_face_timeline(sorted_segments,vid_num)
+    generate_face_timeline(sorted_segments,vid_num)
     person_segment_path = current_directory + "/data/" + str(vid_num) + "/person_segment.csv"
     if (os.path.exists(person_segment_path)):
         person_segment = pd.read_csv(person_segment_path, sep='\t')
@@ -125,8 +124,10 @@ def cluster_and_save(embeddings_file,vid_num):
 
 
     for each_label in result.labels():
+        print("Each label ::: ----> ",each_label)
         if (os.path.exists(data_matrix)):
             p = embeddings.loc[embeddings['track'] == each_label].iloc[:, 2:].values
+            exit(0)
             r = []
             for i, t in enumerate(p):
                 temp = np.array(list(t))
@@ -153,7 +154,7 @@ def cluster_and_save(embeddings_file,vid_num):
                 embeddings_labels_mappings[each_label] = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
 
             else:
-                if min < 0.578:
+                if min < 0.6:
                     embeddings_labels_mappings[each_label] = df_matrix.iloc[real_pos, df_matrix.columns.get_loc('person')]
                 else:
                     embeddings_labels_mappings[each_label] = list(embeddings.loc[embeddings['track'] == each_label].iloc[0, 2:])
@@ -208,7 +209,7 @@ def cluster_and_save(embeddings_file,vid_num):
     file_name = current_directory + "/data/" + str(vid_num) + '/person_bitmap_vector.csv'
     with open(file_name, 'a') as f:
         df_person.to_csv(file_name, sep = '\t', index= False)
-    exit(0)
+
     file_name = current_directory + "/data/" + str(vid_num) + '/person_embeddings_mapping.csv'
     with open(file_name, 'a') as f:
         df_embeddings.to_csv(file_name, sep = '\t', index= False)
@@ -308,8 +309,8 @@ def cluster_and_save(embeddings_file,vid_num):
     print("DF_matrix after: ",df_matrix)
     file_name = current_directory + '/data/person_to_video_matrix.csv'
 
-    with open(file_name, 'a') as f:
-        df_matrix.to_csv(data_matrix, sep = '\t', index= False)
+    # with open(file_name, 'a') as f:
+    #     df_matrix.to_csv(data_matrix, sep = '\t', index= False)
 
 
 
@@ -353,7 +354,8 @@ def cluster_and_save_naive(embeddings_file,vid_num):
         person_segment_naive.to_csv(person_segment_path, sep = '\t', index= False)
 
 
-cluster_and_save_naive("./data/"+ str(1) + "/"+  "friends2_240.embedding.txt", 1)
+# cluster_and_save_naive("./data/"+ str(1) + "/"+  "friends2_240.embedding.txt", 1)
+cluster_and_save("./data/"+ str(4) + "/"+  "bbt_4.embedding.txt", 4)
 #
 
 

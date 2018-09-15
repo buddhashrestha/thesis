@@ -60,6 +60,7 @@ def search(q,query_type):
             person_bitmap[i] = x.astype(int)
 
 
+
         if query_type == 'next':
             timings[each_video] = next(person_bitmap[0],person_bitmap[1])
         if query_type == 'eventually':
@@ -70,7 +71,7 @@ def search(q,query_type):
             timings[each_video] = interval(person_bitmap)
 
 
-
+    timings = convert_segment_to_timings(timings)
     return timings
 
 
@@ -90,6 +91,21 @@ def interval(person_bitmap):#total 30us
 
 ##################################
     return segs
+
+def convert_segment_to_timings(video_segments):
+    timings = {}
+    for each_video in video_segments:
+        df_segment = pd.read_csv("data/" + str(each_video) + '/person_segment.csv', sep='\t')
+        video_seg = video_segments[each_video]
+        each_segment = []
+        for start,end in video_seg:
+            start = df_segment.loc[df_segment['index'] == start]['segment'].values[0]
+            start = start.split(":")[0]
+            end = df_segment.loc[df_segment['index'] == end]['segment'].values[0]
+            end = end.split(":")[1]
+            each_segment.append([start,end])
+        timings[each_video] = each_segment
+    return timings
 
 def next(p1,p2):
     p1_list = p1
@@ -258,13 +274,11 @@ ross = [0.06393729,0.16415235,0.10807271,0.080367,-0.07225583,0.08586863
 
 q = []
 
-
-# q.append(sheldon)
-# q.append(howard)
 import datetime
 
-q.append(rachel)
-q.append(ross)
+q.append(sheldon)
+q.append(howard)
+
 q = numpy.array(q)
 q = q.astype('float32')
 
@@ -272,6 +286,6 @@ a = datetime.datetime.now()
 print("Search : ",search(q,"interval"))
 b = datetime.datetime.now()
 c = b-a
-print("time required: ",c.microseconds)
+print("Total time required: ",c.microseconds)
 
 #TODO:loadup new video, run a person search on a custom photo using FaceDescriptor

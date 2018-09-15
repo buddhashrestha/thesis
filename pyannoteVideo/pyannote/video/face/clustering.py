@@ -98,6 +98,8 @@ class _Model(HACModel):
         # precompute pairwise embedding distance
         data = parent.features
         X = np.array(data[data.columns[2:]])
+        # print(X.shape)
+        # exit(0)
         self.precomputed_ = -squareform(pdist(X, metric='euclidean'))
 
         matrix = ValueSortedDict()

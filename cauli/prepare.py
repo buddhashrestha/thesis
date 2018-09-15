@@ -30,37 +30,38 @@ track_name = movie_name + ".track.txt"
 landmark_name = movie_name + ".landmarks.txt"
 embeddings = movie_name + ".embedding.txt"
 demo = movie_name+ ".track.mp4"
-
+#
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-structure.py",
-      "shot","--verbose","/home/buddha/thesis/pyannote-data/" + file_name,
+      "shot","--verbose","/home/buddha/thesis/pyannote-data/bbt/" + file_name,
       directory+ shots_name])
 print("done with shots.")
 
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py",
-      "track","--verbose","--every=0.5","/home/buddha/thesis/pyannote-data/" + file_name,
+      "track","--verbose","--every=0.5","/home/buddha/thesis/pyannote-data/bbt/" + file_name,
       directory + shots_name,
       directory + track_name])
 print("done with track.")
 
 call(["python","/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py", "demo",
-                       "/home/buddha/thesis/pyannote-data/" + file_name,
+                       "/home/buddha/thesis/pyannote-data/bbt/" + file_name,
                        directory + track_name,
                        directory + demo])
 
 print("done with demo.")
 
 call(["python", "../pyannoteVideo/scripts/pyannote-face.py",
-      "extract","--verbose","../pyannote-data/" + file_name,
+      "extract","--verbose","../pyannote-data/bbt/" + file_name,
       "./data/" + str(vid_num) + "/" + track_name,
       "../dlib-models/shape_predictor_68_face_landmarks.dat",
       "../dlib-models/dlib_face_recognition_resnet_model_v1.dat",
       "./data/" + str(vid_num) + "/" + landmark_name,
       "./data/" + str(vid_num) + "/" +  embeddings])
+
 print("Done with embeddings.")
 
 from cauli.person_to_bitmap_vector import *
 
-# cluster_and_save("./data/"+ str(vid_num) + "/"+  embeddings, vid_num)
+cluster_and_save("./data/"+ str(vid_num) + "/"+  embeddings, vid_num)
 
 print("done with everything")
 print("finished..")
