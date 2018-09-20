@@ -37,24 +37,24 @@ cols = list(df_matrix)
 cols.insert(0, cols.pop(cols.index('person')))
 df_matrix = df_matrix.ix[:, cols]
 
-# for i in os.listdir("/home/buddha/Desktop/photos/finals/"):
-#     q = FaceDescriptor('/home/buddha/Desktop/photos/finals/'+i).getDescriptor()
-#     y.append(q)
+for i in os.listdir("/home/buddha/Desktop/photos/finals/"):
+    q = FaceDescriptor('/home/buddha/Desktop/photos/finals/'+i).getDescriptor()
+    y.append(q)
+
+    # df_matrix[0] = 0
+    video_num = 1
+
+    q = q.astype('float32')
+    q = q.reshape(1, 128)
+    # if face is not present: then add to the list
+    df2 = pd.DataFrame({'person': q.tolist()})
+    df_matrix = pd.concat([df_matrix, df2])
+    j= j +1
 #
-#     # df_matrix[0] = 0
-#     video_num = 1
-#
-#     q = q.astype('float32')
-#     q = q.reshape(1, 128)
-#     # if face is not present: then add to the list
-#     df2 = pd.DataFrame({'person': q.tolist()})
-#     df_matrix = pd.concat([df_matrix, df2])
-#     j= j +1
-# #
-# print(df_matrix)
-# with open(file_name, 'a') as f:
-#     df_matrix.to_csv(file_name, sep = '\t', index= False)
-# exit(0)
+print(df_matrix)
+with open(file_name, 'a') as f:
+    df_matrix.to_csv(file_name, sep = '\t', index= False)
+exit(0)
 
 y = numpy.array(y)
 

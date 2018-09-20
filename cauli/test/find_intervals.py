@@ -13,7 +13,7 @@ def getIntersection(interval_1, interval_2):
         return (start, end)
     return None
 
-def return_intersections(intervals1, intervals2):
+def return_intersections(intervals1, intervals2=[]):
     iter1 = iter(intervals1)
     iter2 = iter(intervals2)
 
@@ -39,6 +39,8 @@ def return_intersections(intervals1, intervals2):
                 interval1 = next(iter1)
         except StopIteration:
             return
+
+
 #
 # set1 = [(1, 6), (10, 15), (20, 30)]
 # set2=[(2, 5), (7, 13),(17,22),(29,35)]

@@ -32,25 +32,25 @@ embeddings = movie_name + ".embedding.txt"
 demo = movie_name+ ".track.mp4"
 #
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-structure.py",
-      "shot","--verbose","/home/buddha/thesis/pyannote-data/bbt/" + file_name,
+      "shot","--verbose","/home/buddha/thesis/pyannote-data/friends/" + file_name,
       directory+ shots_name])
 print("done with shots.")
 
 call(["python", "/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py",
-      "track","--verbose","--every=0.5","/home/buddha/thesis/pyannote-data/bbt/" + file_name,
+      "track","--verbose","--every=0.5","/home/buddha/thesis/pyannote-data/friends/" + file_name,
       directory + shots_name,
       directory + track_name])
 print("done with track.")
 
 call(["python","/home/buddha/thesis/pyannoteVideo/scripts/pyannote-face.py", "demo",
-                       "/home/buddha/thesis/pyannote-data/bbt/" + file_name,
+                       "/home/buddha/thesis/pyannote-data/friends/" + file_name,
                        directory + track_name,
                        directory + demo])
 
 print("done with demo.")
 
 call(["python", "../pyannoteVideo/scripts/pyannote-face.py",
-      "extract","--verbose","../pyannote-data/bbt/" + file_name,
+      "extract","--verbose","../pyannote-data/friends/" + file_name,
       "./data/" + str(vid_num) + "/" + track_name,
       "../dlib-models/shape_predictor_68_face_landmarks.dat",
       "../dlib-models/dlib_face_recognition_resnet_model_v1.dat",
