@@ -37,36 +37,61 @@ cols = list(df_matrix)
 cols.insert(0, cols.pop(cols.index('person')))
 df_matrix = df_matrix.ix[:, cols]
 
-for i in os.listdir("/home/buddha/Desktop/photos/finals/"):
-    q = FaceDescriptor('/home/buddha/Desktop/photos/finals/'+i).getDescriptor()
-    y.append(q)
-
-    # df_matrix[0] = 0
-    video_num = 1
-
-    q = q.astype('float32')
-    q = q.reshape(1, 128)
-    # if face is not present: then add to the list
-    df2 = pd.DataFrame({'person': q.tolist()})
-    df_matrix = pd.concat([df_matrix, df2])
-    j= j +1
+# for i in os.listdir("/home/buddha/Desktop/photos/finals/"):
+#     q = FaceDescriptor('/home/buddha/Desktop/photos/finals/'+i).getDescriptor()
+#     y.append(q)
 #
-print(df_matrix)
-with open(file_name, 'a') as f:
-    df_matrix.to_csv(file_name, sep = '\t', index= False)
-exit(0)
+#     # df_matrix[0] = 0
+#     video_num = 1
+#
+#     q = q.astype('float32')
+#     q = q.reshape(1, 128)
+#     # if face is not present: then add to the list
+#     df2 = pd.DataFrame({'person': q.tolist()})
+#     df_matrix = pd.concat([df_matrix, df2])
+#     j= j +1
+# #
+# print(df_matrix)
+# with open(file_name, 'a') as f:
+#     df_matrix.to_csv(file_name, sep = '\t', index= False)
+# exit(0)
+data_matrix = '/home/buddha/thesis/cauli/data/person_to_video_matrix.csv'
 
-y = numpy.array(y)
+df = pd.read_csv(data_matrix, sep='\t')
+
+
+cols = list(df)
+cols.insert(0, cols.pop(cols.index('person')))
+df = df.ix[:, cols]
+
+x = str(df['person'].tolist()).replace("\'", "")
+x = ast.literal_eval(x)
+y = numpy.array(x)
 
 y = y.astype('float32')
-print(y)
 #searching section
 
 nlist = 1
 k = 4
 quantizer = faiss.IndexFlatL2(d)  # the other index
 index = faiss.IndexIVFFlat(quantizer, d, nlist, faiss.METRIC_L2)
+import numpy as np
+d = 128                           # dimension
+nb = 150                      # database size
+nq = 1                       # nb of queries
+np.random.seed(1234)             # make reproducible
+xb = np.random.random((nb, d)).astype('float32')
+xb[:, 0] += np.arange(nb) / 1000.
+xq = np.random.random((nq, d)).astype('float32')
+xq[:, 0] += np.arange(nq) / 1000.
 
+index.train(xb)# t and y ma k farak cha?
+
+index.add(xb)                  # add may be a bit slower as well
+
+import timeit
+print("Time taken to search :",timeit.timeit(lambda : index.search(xq, 1),number=100))
+exit(0)
 
 index.train(y)# t and y ma k farak cha?
 
@@ -95,6 +120,7 @@ qq.append(leonard)
 
 qq = numpy.array(qq)
 qq = qq.astype('float32')
+
 
 D, I = index.search(qq, 1)     # actual search
 print("I: ",I)

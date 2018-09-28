@@ -58,7 +58,14 @@ def search(q,query_type):
             x = df_person_bitmap.loc[df_person_bitmap['person_label'] == int(p[i]), df_person_bitmap.columns != 'person_label'].values[0]
             x[numpy.isnan(x)] = 0
             person_bitmap[i] = x.astype(int)
-
+            person_bitmap[i] = "".join(map(str, person_bitmap[i]))
+            person_bitmap[i] = int(person_bitmap[i], 2)
+            # person_bitmap[i] = numpy.array(person_bitmap,dtype=numpy.uint32)
+        a = 0b0000111
+        b= 0b0000111
+        import timeit
+        # print("Time taken to do and :", timeit.timeit('x = 0b11111100000001111001; d = 0b11111100000001111001; e =0b11111100000001111001;f =0b11111100000001111001;g =0b11111100000001111001; c = x & d & e & f&g', number=10000))
+        # exit(0)
         df_segment = pd.read_csv("data/" + str(each_video) + '/person_segment.csv', sep='\t')
 
         l = []
@@ -88,19 +95,11 @@ def search(q,query_type):
 
 def interval(person_bitmap,l):#total 30us
 #################################
-    t1_s = datetime.datetime.now()
-    c = numpy.array(person_bitmap,dtype=numpy.uint32)
-    t1_e = datetime.datetime.now()
-    t2_s = datetime.datetime.now()
-    c = c.all(axis=0)
-    t2 = datetime.datetime.now()
-    t3_s = datetime.datetime.now()
-    x = numpy.where(c)[False]
-    t3 = datetime.datetime.now()
+    # c = numpy.prod(person_bitmap)
 
-    print("t1 time :",t1_e-t1_s)
-    print("t2 time :",t2-t2_s)
-    print("t3 time :",t3-t3_s)
+    c = numpy.array(person_bitmap,dtype=numpy.uint32)
+    c = c.all(axis=0)
+    x = numpy.where(c)[False]
 
 ################################# 13us
     #calculate segment now
@@ -245,6 +244,9 @@ my_list = [['sheldon.jpg', 'leonard.jpg'],
 #            ]
 my_list = [['ross.jpg','rachel.jpg']]
 my_list = [['bernadette.jpg','raj.jpg','penny.jpg','howard.jpg','leonard.jpg']]
+my_list = [['raj.jpg','penny.jpg','howard.jpg']]
+
+
 for each_pair in my_list:
     q = []
     p = {}
